@@ -1,0 +1,115 @@
+\chapter{Typesetting: Making Beautiful Documents}
+40 pages
+
+\section{Why \LaTeX?}
+Most people need to write text documents from time to time, be it a CV, an article or a school assignment. Especially if you're writing something you'll use in your profession, you likely want it to \emph{look} professional which just often is not the case when you use what-you-see-is-what-you-get (WYSIWYG) tools like Microsoft Word or LibreOffice Writer. With these kind of tools the author spends time manually tweaking how stuff looks, and most writers just isn't interested enough in typography. In comparison, using \LaTeX{}, the writer focuses solely on the contents of the document. For instance, ``this is a title'', or ``here is a figure''. This is done in terms of coding. But the author does not have to bother about how it looks. \LaTeX{} takes care of that. In fact, this may seem unfamiliar at first, and many novices try to force \LaTeX{} to display stuff in a particular way. My advice: Just don't!
+
+\LaTeX{} certainly comes with a higher learning barrier before you can use it than WYSIWYG tools, but once you get familiar with it, I think you'll find that it's not actually that much slower to write in, and it produces much better results. Also, it always outputs PDF-files which can be read anywhere. You may find a shift in what you spend time on: less time manually placing stuff, more time looking for how to do ``this thing'' with \LaTeX{} on the internet.
+
+There are other alternatives than \LaTeX{} as well, but \LaTeX{} is very well developed and by far the most widespread, at least when it comes to scientific publications and books. We'll also see how to use it for writing slideshow presentations, thus replacing tools such as Microsoft PowerPoint. If there's one professional typesetting tool you want in your toolbox to it's definitely \LaTeX{}.
+
+\section{Which tools you need}
+Basically, \LaTeX{} can be written in any plain text editor (like Notepad if you're using Windows) and stored to a file ending with .tex. The .tex file is then \emph{compiled} to generate a .pdf-file using the command line tool \texttt{pdflatex}. We will go through this in a minute. However, most users prefer a more specialized text editor which runs \texttt{pdflatex} for you. Most such editors also supports highlighting, i.e.\ the application of different colors to different parts of the code to make it more readable. Many good editors exist, but we will use Texmaker which works on both Linux, OS X and Windows.
+
+To get \LaTeX{}, you need to install a \LaTeX{}-distribution on your computer. There are several of them, but the code you write is the same for all of them. Proceed according to your operating system to install a \LaTeX-distribution and Texmaker.
+
+\subsection{Linux}
+On Linux, TeX Live is the recommended distribution. On Ubuntu, Mint or Debian Linux, you can install TeX Live and Texmaker using the following command:
+\begin{minted}{bash}
+sudo apt-get install texlive-full texmaker
+\end{minted}
+
+\subsection{OS X}
+For OS X, MacTeX is the recommended distribution. It is the essentially the same as TeX Live but adds some compatibility to OS X. Download and install MacTeX and Texmaker from the following links:
+
+\begin{verbatim}
+http://tug.org/mactex
+http://www.xm1math.net/texmaker
+\end{verbatim}
+
+\subsection{Windows}
+For Windows either TeX Live or MiKTeX can be used, but many find MiKTeX slightly easier to handle. Install MiKTeX and Texmaker from the following links:
+
+\begin{verbatim}
+http://www.miktex.org
+http://www.xm1math.net/texmaker
+\end{verbatim}
+
+\section{Starting a new document}
+We will start by going through \reflst{latex:minimal} which is about the minimum code required to start a new document.
+\begin{listing}
+	\inputminted{latex}{latex/first.tex}
+	\caption{A minimal \LaTeX{} document}
+	\label{lst:latex:minimal}
+\end{listing}
+Notice that all \LaTeX{}-\emph{commands} start with a backslash, and may be followed by mandatory \emph{arguments} in curly braces, and optional arguments (\emph{options}) in square brackets like this:
+
+\latexone{\command[option1,option2]{argument1}{argument2}}
+
+The first command in any document is \mintinline{latex}{\documentclass} which tells \LaTeX{} what kind of document it is. Typical arguments are \mintinline{latex}{book} for writing books, \mintinline{latex}{report} for writing reports and \mintinline{latex}{article} for writing, well, articles. The option \mintinline{latex}{[a4paper]} tells \LaTeX{} to produce a document in paper size A4. Other options exists for other paper sizes, font sizes, etc.\ which you can find on the internet whenever you need it.
+
+Next, the functionality of \LaTeX{} can be expanded by including \emph{packages} which provides more features (similar to \emph{modules} in Python or \emph{libraries} in other languages). This is done by the \mintinline{latex}{\usepackage} command, one per package you want to use. To begin with, we need three packages. \mintinline{latex}{babel} specifies the written language and \mintinline{latex}{fontenc} determines the font encoding in the .pdf-file and should usually be T1.
+
+\mintinline{latex}{inputenc} tells \LaTeX{} the character encoding of the .tex files, that is, how each letter is represented by zeros and ones in the input file. The most common letters such as a, b, c, and so on are fairly standard and typically have the same representation in most encoding standards and therefore will work regardless of which encoding you use. Local letters such as æ, ø and å, however, may be represented differently in different encoding standards if they even exist at all. If such special characters aren't printed correctly, the problem is usually the choice of encoding. The encoding selected by the \mintinline{latex}{inputenc} needs to be the same as the ones the editor saves the files in, and it needs to be able to represent all characters in your language (or other characters you may need). Luckily, great effort have been done to make a unified character encoding that just works in all cases; UTF-8. I strongly recommend to just always use UTF-8 like in the above example to avoid any problems, but take care to save the files using UTF-8 encoding. Many text editors (e.g.\ Notepad) by default use other standards such as ISO-8859-1. We'll show how to do this in Texmaker in a second.
+
+The commands \latexin{\title}, \latexin{\author} and \latexin{\date} is used to specify the title and author of the document, along with the date is was written/published.
+
+The next new thing we'll encounter is an \emph{environment}. An environment starts with a \latexin{\begin} and ends with an \latexin{\end}, and affects anything in between. The \latexin{document} environment is where you write what actually goes into the document. Everything before it, is called the \emph{preamble} and is not actually printed to the document. Here we only have one thing inside the document, a title page which is auto-generated by the \latexin{\maketitle} command based on the information we provided in the preamble.
+
+\section{Compiling}
+The next step is to compile our minimal example to turn it into a .pdf file. When Texmaker is opened it's toolbar is as depicted in \reffig{latex:texmaker}. To ensure Texmaker saves all files using UTF-8, go to Options$\rightarrow$Configure Texmaker, open the ``Editor'' pane and make sure ``Editor Font Encoding'' is set to UTF-8.
+\begin{figure}
+	\centering
+	\includegraphics[width=\textwidth]{graphics/texmaker.png}
+	\caption{Texmaker toolbar}
+	\label{fig:latex:texmaker}
+\end{figure}
+
+Create a new file, write the minimal document from \reflst{latex:minimal} in it and save it as \texttt{main.tex} in a new folder. You do want to create a separate folder for each document you write since \LaTeX{} generates lots of other files in this folder upon compilation.
+
+One should be aware that people use different compilation strategies. Some people use the program \texttt{latex} which generates a .dvi file and then converts it to .pdf using a conversion tool, while we will use the program \texttt{pdflatex} which directly generates the .pdf file. Both of these are command line programs but Texmaker can run these commands for us so we don't have to. However, to better grasp what's going on behind the curtains, we will see how it's done both from the command line and from Texmaker. If you haven't read \refch{bash} yet, don't worry. You don't need to be able to run the commands to proceed this chapter.
+
+To compile \texttt{main.tex} using the (Linux, OS X or Windows) command line, navigate to the folder where the file is, and simply run:
+\bashone{pdflatex main.tex}
+and a file named \bashin{main.pdf} will be created, and you're done.
+
+In Texmaker, we can use the arrow next to ``Quick Build'' drop down menu (see \reffig{latex:texmaker}) to run any of the commands available from the drop down menu. As an example, we can choose ``PDFLaTeX'' and click the arrow, and to view it, we can click the arrow next to ``View PDF''. The ``Quick Build'' option is useful, since it can be configured to run a series of commands in sequence. If you again go to Options$\rightarrow$Configure Texmaker and select the ``Quick Build'' pane you can set Quick Build to ``PdfLaTeX + View PDF''. In the ``Commands'' pane, you can see exactly which commands Texmaker uses when running this programs. Now, when you choose ``Quick Build'' and click the arrow, the document will be compiled and displayed.
+
+Computers are very literal, and care about every tiny mistake you make. If there's a typo somewhere in your code, e.g. a missing letter in a command, the document simply will not compile, but returns an error. The error messages may look cryptic at first, but they do tell what the error is and which line it is on. Try to sort out one error at a time, starting with the top one. Another advice: Compile your document often to avoid a bunch of errors to accumulate.
+
+\section{Document structure}
+Now we're going to fill our document with contents, and expand our minimal example to what is shown in \reflst{latex:structure}.
+\begin{listing}
+	\inputminted{latex}{latex/structure.tex}
+	\caption{A \LaTeX{} document with some structure and text}
+	\label{lst:latex:structure}
+\end{listing}
+
+Documents are split into chapters, which can be split into sections, which again can be split into subsections and further on to subsubsections. The corresponding commands are, intuitively, \latexin{\chapter{...}}, \latexin{\section}, \latexin{\subsection} and \latexin{\subsubsection} and take one argument, which is the name of the chapter, section, subsection or subsubsection.
+
+
+chapters, sections, subsections, text, comments, tableofcontents, include/input
+
+\section{Assignments}
+Change language, change documentclass
+
+\section{References}
+
+\section{Formatting}
+Special characters, symbols, emphasize and quotes
+
+\section{Lists}
+itemize, enumerate
+
+\section{Figures}
+png vs. pdf, references, captions, inkscape
+
+\section{Tables}
+
+\section{Bibliography}
+
+\section{Writing an Application}
+
+\section{Writing a CV using CurVe}
+
+\section{Writing a presentation using Beamer}

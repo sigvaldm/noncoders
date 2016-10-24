@@ -1,0 +1,21 @@
+\chapter{Introduction}
+Programmers, engineers, scientists and tech-savvy people in general have had the opportunity to learn a bunch of different computer programs and programming languages which makes their everyday work in front of the computer both easier and more efficient. In comparison, less technically minded people, who lack such a toolbox, often end up using inconvenient tools and therefore come up with inefficient and impractical solutions.
+
+Consider for instance that you have hundreds of photos and you’d like to change the resolution on all of them? Or maybe add a watermark before sharing them? Or change the filename to include the date? Such tasks can be tedious if you don’t know the right tools. However, the file names of all files can be changed using a single command in the Bash command line interface. A script that adds a watermark to every image takes less then 20 lines of code using the Python scripting language. Of course, programming takes time to learn, and it’s not for everybody to become a full time professional programmer. But with the emergence of modern low-threshold scripting languages like Python, why should such handy techniques still be reserved for geeks only?
+
+Another thing which many may benefit from is learning a professional typesetting tool like LaTeX to write documents. Applications, CV’s, reports, slideshows, etc. Because let’s admit it: Most of us aren’t typographists. We don’t know exactly which font to use, which size, which line spacing and which margins to use everywhere to make a document look professional. LaTeX takes care of all that for you, but then you need to tell LaTeX what’s supposed to be a chapter, what’s a new paragraph, and so on. And that’s done by coding. It doesn’t have to be that hard, to start a new chapter with the title “Introduction”, for instance, you simply type 
+
+\begin{minted}{latex}
+\chapter{Introduction}
+\end{minted}
+And how do you generate a table of contents in LaTeX? Simple. Because LaTeX know what the chapters are, all you have to do is type:
+\begin{minted}{latex}
+\tableofcontents
+\end{minted}
+where you want your table of contents.
+
+And as a last example, have you ever had to collaborate with someone to write a document in a normal text processing tool such as Microsoft Word? Then you’ll know it’s a mess. No two people can edit the document at once, despite editing different parts of the file. Documents written in LaTeX, as well as programs written in languages such as Python can be efficiently shared amongs many users using a Version Control System (VCS) such as Git and everyone can work on it simultaneously without stepping on each other’s toes! VCSs like Git also allows you to backtrack the whole history of your documents in case you regret something you once did.
+
+The aim of this little book is to provide the normal guy on the street with at least a small toolbox allowing him or her to work more efficiently. More in a similar manner as professionals. The tools presented are carefully selected because together, they form a minimal toolbox allowing the reader to use a computer in such a rich way. Moreover, they are considered to be more useful, versatile and simple to learn than other alternatives. Admittedly, we will only scratch the surface of all these tools. Just enough to get you started, with pointers of where to look for further information. True, it will not even cover the same depth as most beginner’s books, since it is not the aim of this book to turn you into a programmer. However, it is assumed that the reader, being a generation which has grown up with technology, is capable of finding his/her way around in simple graphical computer programs. Therefore this book will focus on the coding aspects, only providing pointers to which graphical programs may be useful (for instance to make figures in documents).
+
+Finally, each part are self-contained and may be read independently of the other parts (although using Git is kind of meaningless without knowing some other coding).
