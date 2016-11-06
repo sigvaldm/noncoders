@@ -2,6 +2,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage[english]{babel}
+\usepackage{lipsum}
 
 \title{My First Document}
 \author{My Name}
@@ -10,8 +11,9 @@
 \begin{document}
 
 \maketitle
+\tableofcontents
 
-Here is some text.
-% This is a comment.
+\input{introduction.tex}
+\input{conclusion.tex}
 
 \end{document}

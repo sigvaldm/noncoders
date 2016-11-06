@@ -6,20 +6,39 @@
 \usepackage[chapter]{minted}
 \usepackage{mdframed}
 \usepackage{graphicx}
+\usepackage{fancyvrb}
+\usepackage{upquote}
+\usepackage{xcolor}
+\usepackage{amsmath}
+\usepackage{subcaption}
+
+\definecolor{folder}{HTML}{325fcf}
 
 \newcommand{\latexin}{\mintinline{latex}}
 \newcommand{\bashin}{\mintinline{bash}}
+\newcommand{\winin}{\mintinline{powershell}}
+\newcommand{\ignore}[1]{} % Ignores it's argument and does nothing. To trick highlighting in Texmaker.
 
 \newcommand{\latexone}[1]{\mint[frame=none,numbers=none]{latex}|#1|}
-\newcommand{\bashone}[1]{\mint{bash}|#1|}
+\newcommand{\bashone}[1]{\mint{bash}|$ #1|}
+\newcommand{\bashwin}[2]{\\ \\ \mintinline{bash}{$ #1}\hfill(Windows: \mintinline{powershell}{> #2})\hfill~}
+%\ignore{$}
+\newcommand{\winone}[1]{\mint{powershell}|> #1|}
+\newcommand{\bashonet}[1]{\verb+$ asdf+#1}
+%\ignore{$}
+
+\setminted[latex]{frame=single,linenos}
+\setminted[bash]{frame=single,linenos,autogobble}
+
+
 
 \newcommand{\reflst}[1]{Listing~\ref{lst:#1}}
 \newcommand{\reffig}[1]{Figure~\ref{fig:#1}}
 \newcommand{\refch}[1]{Chapter~\ref{ch:#1}}
+\newcommand{\refsec}[1]{Section~\ref{sec:#1}}
+\newcommand{\reftab}[1]{Table~\ref{tab:#1}}
 
 \renewcommand{\dateseparator}{.}
-
-\setminted[latex]{frame=single,linenos}
 
 \title{Coding for Non-Coders}
 \author{Sigvald Marholm}
@@ -28,15 +47,12 @@
 \begin{document}
 
 \maketitle
-\newpage
-
 \tableofcontents
-\newpage
 
-\include{introduction}
-\include{bash}
-\include{python}
-\include{latex}
-\include{git}
+\input{introduction}
+\input{bash}
+\input{python}
+\input{latex}
+\input{git}
 
 \end{document}
