@@ -4,15 +4,18 @@
 \usepackage[english]{babel}
 \usepackage[ddmmyy]{datetime}
 \usepackage[chapter]{minted}
-\usepackage{mdframed}
+\usepackage[framemethod=tikz]{mdframed}
 \usepackage{graphicx}
 \usepackage{fancyvrb}
 \usepackage{upquote}
 \usepackage{xcolor}
 \usepackage{amsmath}
 \usepackage{subcaption}
+\usepackage{makeidx}
 
 \definecolor{folder}{HTML}{325fcf}
+\definecolor{cccolor}{rgb}{.67,.7,.67}
+
 \setminted[latex]{frame=lines,linenos,autogobble}
 \setminted[bash]{frame=lines,linenos,autogobble}
 \newcommand{\ignore}[1]{} % Does nothing. \ignore{$} to trick highlighting.
@@ -32,9 +35,14 @@
 \author{Sigvald Marholm}
 \date{\today}
 
+\makeindex
+
 \begin{document}
 
 \maketitle
+
+\input{license}
+
 \tableofcontents
 
 \input{introduction}
@@ -42,5 +50,7 @@
 \input{python}
 \input{latex}
 \input{git}
+
+\printindex
 
 \end{document}

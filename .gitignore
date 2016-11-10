@@ -8,3 +8,6 @@ _minted-*
 test
 latex/*.pdf
 main.pdf
+main.idx
+main.ilg
+main.ind

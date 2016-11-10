@@ -2,6 +2,8 @@
 40 pages
 
 \section{Why \LaTeX?}
+\index{latex}
+\index{WYSIWYG}
 Most people need to write text documents from time to time, be it a CV, an article or a school assignment. Especially if you're writing something you'll use in your profession, you likely want it to \emph{look} professional which usually is not the case when you use tools like Microsoft Word or LibreOffice Writer. With these what-you-see-is-what-you-get (WYSIWYG) tools, the author spends time manually tweaking how stuff looks; where the title is, which fonts to use, text sizes, and placement. Most of us are not interested enough in typography to do this right. In comparison, using \LaTeX{}, the writer focuses on what stuff \emph{is}, rather than how stuff \emph{looks}. By telling \LaTeX{} ``this is a title'', or ``this is a new paragraph'' \LaTeX{} itself will figure out the proper formatting. It may seem unfamiliar at first that \LaTeX{} decides how stuff looks, indeed many novices try to force \LaTeX{} to display stuff in a particular way. My advice: don't!
 
 \LaTeX{} certainly comes with a higher learning barrier before you can use it than WYSIWYG tools, but once you get familiar with it, I think you'll find that using it actually isn't that much slower, and it produces much better results. You may find a shift in what you spend time on: less time manually placing stuff, more time looking for how to do ``this thing'' with \LaTeX{} on the internet.
@@ -9,17 +11,21 @@ Most people need to write text documents from time to time, be it a CV, an artic
 Other professional typesetting tools exist as well, but \LaTeX{} is very well developed and by far the most widespread, at least in scientific publications and books. We'll also see how to use it for making slideshow presentations, thus replacing tools such as Microsoft PowerPoint. If there's one typesetting tool you want in your toolbox to it's definitely \LaTeX{}.
 
 \section{Which tools you need}
+\index{highlighting}
+\index{Texmaker}
 \LaTeX{} can be written in any plain text editor (like Notepad if you're using Windows) and stored to a file ending with .tex. The .tex file is then \emph{compiled} to generate a .pdf-file using the command line tool \verb|pdflatex|. However, most users prefer a more specialized text editor which runs \verb|pdflatex| for you. Most such editors also supports highlighting, i.e.\ the application of different colors to different parts of the code to make it more readable. Many good editors exist, but we will use Texmaker which works on both Linux, OS X and Windows.
 
 To get \LaTeX{}, you need to install a \LaTeX{}-distribution on your computer. There are several of them, but the code you write is the same for all of them. Proceed according to your operating system to install a \LaTeX-distribution and Texmaker.
 
 \subsection{Linux}
+\index{TeX Live}
 On Linux, TeX Live is the recommended distribution. On Ubuntu, Mint or Debian Linux, you can install TeX Live and Texmaker using the following command:
 \begin{verbatim}
 $ sudo apt-get install texlive-full texmaker
 \end{verbatim}
 
 \subsection{OS X}
+\index{MacTeX}
 For OS X, MacTeX is the recommended distribution. It is the essentially the same as TeX Live but adds some compatibility to OS X. Download and install MacTeX and Texmaker from the following links:
 
 \begin{verbatim}
@@ -28,6 +34,7 @@ http://www.xm1math.net/texmaker
 \end{verbatim}
 
 \subsection{Windows}
+\index{MiKTeX}
 For Windows either TeX Live or MiKTeX can be used, but many find MiKTeX slightly easier to handle. Install MiKTeX and Texmaker from the following links:
 
 \begin{verbatim}
@@ -36,9 +43,7 @@ http://www.xm1math.net/texmaker
 \end{verbatim}
 
 \section{Our first document}
-
-\subsection{A minimal example}
-We will start by going through \reflst{latex:minimal} which is about the minimum code required to start a new document. The left part is the source code while the right part demonstrates the output produced by the code. The actual result will necessarily be slightly different, since it will be placed in its own document with its own page and formatting, but a demonstration may be instructive in some of the examples nevertheless.
+We will start by going through \reflst{latex:minimal} which is about the minimum code required to start a new document. The left part is the source code while the right part demonstrates the output produced by the code. The actual result will necessarily be slightly different, since it will be placed in its own document with its own page, margins and formatting, but a demonstration may be instructive in some case nonetheless.
 
 \begin{listing}
 	\rule{\textwidth}{0.4pt}
@@ -53,12 +58,16 @@ We will start by going through \reflst{latex:minimal} which is about the minimum
 	\label{lst:latex:minimal}
 \end{listing}
 
+\index{command}
+\index{argument}
+\index{option}
 Notice that all \LaTeX{}-\emph{commands} start with a backslash, and may be followed by mandatory \emph{arguments} in curly braces, and optional arguments (\emph{options}) in square brackets like this:
 
+\index{syntax}
 \latexone|\command[option1,option2]{argument1}{argument2}|
 \noindent Such ``rules'' for how commands are structured is usually referred to as \emph{syntax}.
 
-\subsubsection{Document class}
+\index{\latexin{\documentclass}}
 The first command in any document is \latexin{\documentclass} which tells \LaTeX{} what kind of document it is. Some possible arguments are shown in \reftab{latex:documentclass}. The option \latexin{a4paper} tells \LaTeX{} to produce a document in paper size A4.
 
 \begin{table}
@@ -76,14 +85,8 @@ The first command in any document is \latexin{\documentclass} which tells \LaTeX
 	\label{tab:latex:documentclass}
 \end{table}
 
-Some people think \LaTeX{} produces wastefully large margins, and tries to force it to use smaller margins. However, typographists know that the mind gradually gets unfocused by the end of the line, and refocuses again for the next line. Henceforth, \LaTeX{} takes care of not making lines too long. Books are often written in the slightly smaller format B5 to reduce wasted paper, while magazines and scientific journals often split the pages in two columns using the option \latexin{twocolumn}, e.g.:
-
-\latexone|\usepackage[a4paper,twocolumn]{article}|
-\noindent Consider this if it is important for you to reduce wasted space.
-
 \latexin{\documentclass} also support options for other paper sizes, font sizes, etc.\ which you can find on the internet whenever you need it.
 
-\subsubsection{Packages}
 Next, the functionality of \LaTeX{} can be expanded by including \emph{packages} which provides more features (similar to \emph{modules} in Python or \emph{libraries} in other languages). This is done by the \mintinline{latex}{\usepackage} command, one per package you want to use. To begin with, we need three packages: \latexin{inputenc} specifies the \emph{character encoding} which is used in the .tex files. We'll get back to this. \mintinline{latex}{fontenc} determines the \emph{font encoding} to be used in the .pdf-file. We won't dig into this but it should usually be T1. Finally, \mintinline{latex}{babel} specifies the written language.
 
 The next new thing we'll encounter is an \emph{environment}. An environment starts with a \latexin{\begin} and ends with an \latexin{\end}, and affects anything in between. The \latexin{document} environment is where you write what actually goes into the document. Everything before it, is called the \emph{preamble} and is not actually printed to the document. Here we only have the text ``Here is some text.'' and a \emph{comment}, which is text \LaTeX{} completely ignores. Everything following a \% is a comment. Comments are only for your own convenience; you may write comments for instance about what commands does, why you chose to write something the way you did, etc.
@@ -132,13 +135,7 @@ When we're writing a document, we likely want to structure it by splitting it in
 
 A chapter is a rather big, voluminous entity. The chapter title may well consume approximately half a page, like in this book. In smaller documents like articles, school assignments, etc., which may only be a few pages, this is not appropriate. The  \latexin{article} document class is suitable in such cases since it does not have chapters. There, sections are the highest structural level.
 
-Further on, \LaTeX{} do not care if you write a whole paragraph in one line, or split it up into more lines. It will not break the lines where you do, but where it deems appropriate. To start a \emph{new} paragraph, you hit enter twice leaving a line open (line 14 in \reflst{latex:structure}). In \LaTeX{} documents text is not left-aligned but justified, i.e.\ spaces are stretched so that all lines end at the same point. New paragraphs are indicated by an indentation which is clearly visible among the justified lines.
-
-In \reflst{latex:structure} we have also used the command \latexin{\lipsum[1-3]}. This is a command which fills the document with paragraphs one to three of some rather arbitrary sample text known as Lorem ipsum. Lorem ipsum is a piece of scrambled Latin text which is commonly inserted into a document or web page before you have any actual contents just to get a feel for how it will look. Repeating short fragments such as ``text text text'' produces patterns in the document which looks unnatural. \latexin{\lipsum}, however, is not provided by \LaTeX{} as-is but is rather provided to us by a package \latexin{lipsum}. To use \latexin{\lipsum}, we need to include this package in the preamble of our document (line 5 in \reflst{latex:structure}). The \LaTeX{}-distributions comes pre-loaded with a bunch of packages (especially TeX Live) so you will likely have most of them. If not, you'll need to install it separately.
-
-As a side remark, you may notice the \latexin{\lipsum[1-3]} command in \reflst{latex:structure}. This command outputs paragraphs one to three of a text known as Lorem ipsum. Lorem ipsum is based on an old Latin text by Cicero, but scrambled to become senseless, and is typically used as dummy text in web pages and documents to see how it looks with contents. The disadvantage of just repeating for instance ``text text text ...'' over and over again is that it creates unnatural patterns in the text.
-
-In \reflst{latex:structure} we have also used the command \latexin{\lipsum}. This is a command which fills the document by some rather arbitrary sample text at this spot known as Lorem ipsum. Lorem ipsum is a piece of gibberish latin text which is commonly inserted into a document or web page before you have any actual contents just to get a feel for how it will look. \latexin{\lipsum}, however, is not provided by \LaTeX{} as-is but is rather provided to us by a package \latexin{lipsum}. To use \latexin{\lipsum}, we need to include this package in the preamble of our document (line 5 in \reflst{latex:structure}). The \LaTeX{}-distributions comes pre-loaded with a bunch of packages (especially TeX Live) so you will likely have most of them. If not, you'll need to install it separately.
+Further on, \LaTeX{} do not care if you write a whole paragraph in one line, or split it up into more lines. It will not break the lines where you do, but where it deems appropriate. To start a \emph{new} paragraph, you hit enter twice leaving a line open (line 25 in \reflst{latex:structure}). 
 
 \subsection{Table of contents}
 Since \LaTeX{} knows what are structural elements like chapters, sections, and so on, it can also auto-generate a table of contents for you. This is done with the \latexin{\tableofcontents} command on line 9. When compiling the document the first time, \LaTeX{} makes a list of all the structural elements and stores it in one of its auxiliary files. This list will be used when making the table of contents, but unfortunately will not be available until the next time you compile the document. Therefore, the first time you compile the document, the compiler will not be able to generate the table of contents properly. Likewise, if you do any changes in the structure of the documents, you will have to compile twice for table of contents to reflect those changes.
@@ -149,48 +146,8 @@ Since \LaTeX{} knows what are structural elements like chapters, sections, and s
 The commands \latexin{\title}, \latexin{\author} and \latexin{\date} can be put in the preamble to tell \LaTeX{} the title and author of the document, along with the date it was written/published.
 
  Here we have only a title page which is auto-generated by the \latexin{\maketitle} command, and the text ``Here is some text.''. Normal text can simply be written as-is and requires no special commands.
-
-
-\subsection{Formatting}
-Basically, \LaTeX{} takes care of formatting, but sometimes you may want to tell \LaTeX{} to emphasize a word. This is done using \latexin{\emph}. You generally do not tell \LaTeX{} to display text as bold, italic or underlined like in WYSIWYG programs, but rather to emphasize it. Then it is up to \LaTeX{} to emphasize it in the proper way (which normally is italic).
-
-Comments are written using two backticks in the beginning of the quote, and two single quote marks at the end like this:
-
-\latexone{``This is a quote''}
-
-The reason for not just using a normal double quote mark is that various languages have different conventions of how quotation marks looks like, e.g. <<quote>>, ,,quote'' or "quote". When using two backticks and two single-quote marks, \LaTeX{} replaces them by the proper quotation marks for your language.
-
-What do you think the command \latexin{\LaTeX{}} on line 18 in \reflst{latex:structure} do?
-
-In \reflst{latex:structure} we have also used the command \latexin{\lipsum}. This is a command which fills the document by some rather arbitrary sample text at this spot known as Lorem ipsum. Lorem ipsum is a piece of gibberish latin text which is commonly inserted into a document or web page before you have any actual contents just to get a feel for how it will look. \latexin{\lipsum}, however, is not provided by \LaTeX{} as-is but is rather provided to us by a package \latexin{lipsum}. To use \latexin{\lipsum}, we need to include this package in the preamble of our document (line 5 in \reflst{latex:structure}). The \LaTeX{}-distributions comes pre-loaded with a bunch of packages (especially TeX Live) so you will likely have most of them. If not, you'll need to install it separately.
-
-Make sure you understand each line in \reflst{latex:structure}. 
-
-\subsection{Reserved characters}
-While you can write text as normal in \LaTeX{}, some symbols are reserved for special use. For instance, if you write a \% (comment symbol), \LaTeX{} ignores everything else on that line. But what if you actually want to write \%? You can write reserved symbols by \emph{escaping} them with a backslash like this:
-
-\latexone{We offer you an interest rate of 5\% }
-The following characters are reserved for special use in \LaTeX{}:
-\begin{verbatim}
-# $ % ^ & _ { } ~
-\end{verbatim} 
-
-But they can be written as follows:
-
-\latexone{\# \$ \% \^{} \& \_ \{ \} \~{} \textbackslash{}}
-
-
-\subsection{Assignments}
-To familiarize yourself a bit with \LaTeX{}, here's some small suggested assignments:
-\begin{enumerate}
-	\item Compile the document in \reflst{latex:structure} if you have not done so already.
-	\item Experiment with changing the content. Try out some reserved characters.
-	\item Change the language of the document to your native tongue. Use the internet to find the right option of the \latexin{babel} package. Hint: When you change the language of the babel package of an already existing document you need to delete the file \verb|main.aux| before compiling. This is because \verb|main.aux|, which is an auxiliary file \LaTeX{} uses, remembers the previously used language and this causes a conflict in the compiler. Not understanding why changing language fails is a common source of frustration.
-	\item Change the document class to \latexin{article}. Unlike \latexin{book} and \latexin{report}, \latexin{article} does not spend almost half a page writing ``Chapter 1 - Introduction'', so for smaller documents (e.g.\ school assignments), \latexin{article} is a good document class to choose. \latexin{article} do not have chapters, so replace all chapters by sections, sections by subsections and subsections by subsubsections.
-	\item Let's say we don't want to enumerate the subsubsections. Then you can replace \latexin{\subsection{something}} by \latexin{\subsection*{something}}
-\end{enumerate}
-
-\subsection{Splitting documents into several files}
+ 
+ \subsection{Splitting documents into several files}
 As your project gets bigger, your \verb|main.tex| file may start looking like a mess and you just can't find the parts your looking for. In such cases, it is very useful to split the document into multiple files, for instance one file per chapter, section or any other appropriately sized chunks of text. The main file may then look like in \reflst{latex:multifiles}.
 
 \begin{listing}
@@ -208,6 +165,58 @@ The introduction.tex file is demonstrated in \reflst{latex:introduction} and the
 	\caption{A chapter put into a separate file}
 	\label{lst:latex:introduction}
 \end{listing}
+
+
+\section{Formatting}
+Basically, \LaTeX{} takes care of formatting, but sometimes you may want to tell \LaTeX{} to emphasize a word. This is done using \latexin{\emph}. You generally do not tell \LaTeX{} to display text as bold, italic or underlined like in WYSIWYG programs, but rather to emphasize it. Then it is up to \LaTeX{} to emphasize it in the proper way (which normally is italic).
+
+Comments are written using two backticks in the beginning of the quote, and two single quote marks at the end like this:
+
+\latexone{``This is a quote''}
+
+The reason for not just using a normal double quote mark is that various languages have different conventions of how quotation marks looks like, e.g. <<quote>>, ,,quote'' or "quote". When using two backticks and two single-quote marks, \LaTeX{} replaces them by the proper quotation marks for your language.
+
+What do you think the command \latexin{\LaTeX{}} on line 18 in \reflst{latex:structure} do?
+
+In \reflst{latex:structure} we have also used the command \latexin{\lipsum}. This is a command which fills the document by some rather arbitrary sample text at this spot known as Lorem ipsum. Lorem ipsum is a piece of gibberish latin text which is commonly inserted into a document or web page before you have any actual contents just to get a feel for how it will look. \latexin{\lipsum}, however, is not provided by \LaTeX{} as-is but is rather provided to us by a package \latexin{lipsum}. To use \latexin{\lipsum}, we need to include this package in the preamble of our document (line 5 in \reflst{latex:structure}). The \LaTeX{}-distributions comes pre-loaded with a bunch of packages (especially TeX Live) so you will likely have most of them. If not, you'll need to install it separately.
+
+Make sure you understand each line in \reflst{latex:structure}. 
+
+\subsection{To put somewhere}
+
+Some people think \LaTeX{} produces wastefully large margins, and tries to force it to use smaller margins. However, typographists know that the mind gradually gets unfocused by the end of the line, and refocuses again for the next line. Henceforth, \LaTeX{} takes care of not making lines too long. Books are often written in the slightly smaller format B5 to reduce wasted paper, while magazines and scientific journals often split the pages in two columns using the option \latexin{twocolumn}, e.g.:
+
+\latexone|\usepackage[a4paper,twocolumn]{article}|
+\noindent Consider this if it is important for you to reduce wasted space.
+
+
+In \LaTeX{} documents text is not left-aligned but justified, i.e.\ spaces are stretched so that all lines end at the same point. New paragraphs are indicated by an indentation which is clearly visible among the justified lines.
+
+In \reflst{latex:structure} we have also used the command \latexin{\lipsum}. This is a command which fills the document by some rather arbitrary sample text at this spot known as Lorem ipsum. Lorem ipsum is a piece of gibberish latin text which is commonly inserted into a document or web page before you have any actual contents just to get a feel for how it will look. \latexin{\lipsum}, however, is not provided by \LaTeX{} as-is but is rather provided to us by a package \latexin{lipsum}. To use \latexin{\lipsum}, we need to include this package in the preamble of our document (line 5 in \reflst{latex:structure}). The \LaTeX{}-distributions comes pre-loaded with a bunch of packages (especially TeX Live) so you will likely have most of them. If not, you'll need to install it separately.
+
+\subsection{Reserved characters}
+While you can write text as normal in \LaTeX{}, some symbols are reserved for special use. For instance, if you write a \% (comment symbol), \LaTeX{} ignores everything else on that line. But what if you actually want to write \%? You can write reserved symbols by \emph{escaping} them with a backslash like this:
+
+\latexone{We offer you an interest rate of 5\% }
+The following characters are reserved for special use in \LaTeX{}:
+\begin{verbatim}
+# $ % ^ & _ { } ~
+\end{verbatim} 
+
+But they can be written as follows:
+
+\latexone{\# \$ \% \^{} \& \_ \{ \} \~{} \textbackslash{}}
+
+
+\section{Assignments}
+To familiarize yourself a bit with \LaTeX{}, here's some small suggested assignments:
+\begin{enumerate}
+	\item Compile the document in \reflst{latex:structure} if you have not done so already.
+	\item Experiment with changing the content. Try out some reserved characters.
+	\item Change the language of the document to your native tongue. Use the internet to find the right option of the \latexin{babel} package. Hint: When you change the language of the babel package of an already existing document you need to delete the file \verb|main.aux| before compiling. This is because \verb|main.aux|, which is an auxiliary file \LaTeX{} uses, remembers the previously used language and this causes a conflict in the compiler. Not understanding why changing language fails is a common source of frustration.
+	\item Change the document class to \latexin{article}. Unlike \latexin{book} and \latexin{report}, \latexin{article} does not spend almost half a page writing ``Chapter 1 - Introduction'', so for smaller documents (e.g.\ school assignments), \latexin{article} is a good document class to choose. \latexin{article} do not have chapters, so replace all chapters by sections, sections by subsections and subsections by subsubsections.
+	\item Let's say we don't want to enumerate the subsubsections. Then you can replace \latexin{\subsection{something}} by \latexin{\subsection*{something}}
+\end{enumerate}
 
 \section{References}
 
