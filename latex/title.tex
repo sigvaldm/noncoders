@@ -2,10 +2,20 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage[english]{babel}
+\usepackage[ddmmyyyy]{datetime}
 \usepackage{lipsum}
+
+\renewcommand{\dateseparator}{.}
+\setcounter{tocdepth}{0}
+\setcounter{secnumdepth}{1}
+
+\author{Peter Pan}
+\title{My Document}
+\date{10.11.16}
 
 \begin{document}
 
+\maketitle
 \tableofcontents
 
 \chapter{Introduction}

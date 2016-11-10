@@ -18,13 +18,13 @@ or in Windows 10, enable the Windows Subsystem for Linux (WSL) and install bash.
 \section{The file system}
 In Windows, the file system starts on a given hard disk or partition, say \verb|C:\|, and from there on you may have folders such as \verb|C:\folder| and files in this folder such as \verb|C:\folder\file|. The hard disk or partition is the starting point for the rest of the file system, and you have one letter per hard disk or partition.
 
-In Unix-like systems, the file system starts at a \emph{root} directory which we simply denote by \bashin{/} (not to be confused with the \emph{root user} to be discussed in \refsec{bash:permissions}). We denote a folder in this root directory like this: \bashin{/folder}, and a file inside this folder: \bashin{/folder/file}. But we do not have anything like \verb|C:\|. 
+In Unix-like systems, the file system starts at a \emph{root} directory which we simply denote by \verb|/| (not to be confused with the \emph{root user} to be discussed in \refsec{bash:permissions}). We denote a folder in this root directory like this: \verb|/folder|, and a file inside this folder: \verb|/folder/file|. But we do not have anything like \verb|C:\|. 
 
-We may very well have separate hard disks or partitions within Unix-like file systems, but the division is such that for instance one hard disk hold everything in the root directory, but as soon as you enter a particular folder, for instance \bashin{/home}, you enter the \emph{mount point} of another hard disk meaning that everything in this particular sub-folder is located on that other hard disk.
+We may very well have separate hard disks or partitions within Unix-like file systems, but the division is such that for instance one hard disk hold everything in the root directory, but as soon as you enter a particular folder, for instance \verb|/home|, you enter the \emph{mount point} of another hard disk meaning that everything in this particular sub-folder is located on that other hard disk.
 
 Also note that Windows uses backslash whereas in Unix it's a forward slash. Unix-like systems also care about small vs. capital letters in file and folder names (it is \emph{case sensitive}).
 
-In Linux, there is a very well defined set of folders which always exists in the root directory, and they all have a well defined purpose. The most important one for beginners, is \bashin{/home}. This folder has one directory per user, so if your username is ``peter'' your \emph{home folder} would be \bashin{/home/peter}. This is where you put all your stuff, kind of like ``My Documents'' in Windows except that you actually \emph{do} have all your personal files only in your home folder. Programs and system files are located outside \bashin{/home} and you generally cannot change any files outside your home folder. One benefit of this is that it becomes a lot easier to copy all your personal files from one computer to another (e.g.\ to take backup) without including programs and system files.
+In Linux, there is a very well defined set of folders which always exists in the root directory, and they all have a well defined purpose. The most important one for beginners, is \verb|/home|. This folder has one directory per user, so if your username is ``peter'' your \emph{home folder} would be \verb|/home/peter|. This is where you put all your stuff, kind of like ``My Documents'' in Windows except that you actually \emph{do} have all your personal files only in your home folder. Programs and system files are located outside \verb|/home| and you generally cannot change any files outside your home folder. One benefit of this is that it becomes a lot easier to copy all your personal files from one computer to another (e.g.\ to take backup) without including programs and system files.
 
 \section{Linux and OS X}
 
@@ -45,7 +45,7 @@ A command in bash is written in the following way:
 $ command argument1 argument2
 \end{verbatim}
 
-\verb|command| is here actually just the name of the program which we run, and it may take several \emph{arguments} which are just input we pass to it. It may also have \emph{switches} which turn on and off options. For instance if we want to use a switch called \bashin{-s}, the command would look like this:
+\verb|command| is here actually just the name of the program which we run, and it may take several \emph{arguments} which are just input we pass to it. It may also have \emph{switches} which turn on and off options. For instance if we want to use a switch called \verb|-s|, the command would look like this:
 
 \begin{verbatim}
 $ command -s argument1 argument2
@@ -667,7 +667,7 @@ and if you enter ``My Documents'':
 C:\My Documents>
 \end{verbatim}
 
-The Windows command line pretty much has the same syntax, but the name of the commands, what they do, what their arguments are and what their switches are is often different. One difference in syntax, though, is that switches are often (but not always) preceded by \verb$/$ rather than \bashin{-}:
+The Windows command line pretty much has the same syntax, but the name of the commands, what they do, what their arguments are and what their switches are is often different. One difference in syntax, though, is that switches are often (but not always) preceded by \verb$/$ rather than \verb|-|:
 
 \begin{verbatim}
 > command /s argument1 argument2

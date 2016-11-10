@@ -5,13 +5,9 @@ Consider for instance that you have hundreds of photos and you’d like to chang
 
 Another thing which many may benefit from is learning a professional typesetting tool like LaTeX to write documents. Applications, CV’s, reports, slideshows, etc. Because let’s admit it: Most of us aren’t typographists. We don’t know exactly which font to use, which size, which line spacing and which margins to use everywhere to make a document look professional. LaTeX takes care of all that for you, but then you need to tell LaTeX what’s supposed to be a chapter, what’s a new paragraph, and so on. And that’s done by coding. It doesn’t have to be that hard, to start a new chapter with the title “Introduction”, for instance, you simply type 
 
-\begin{minted}{latex}
-\chapter{Introduction}
-\end{minted}
+\latexone{\chapter{Introduction}}
 And how do you generate a table of contents in LaTeX? Simple. Because LaTeX know what the chapters are, all you have to do is type:
-\begin{minted}{latex}
-\tableofcontents
-\end{minted}
+\latexone{\tableofcontents}
 where you want your table of contents.
 
 And as a last example, have you ever had to collaborate with someone to write a document in a normal text processing tool such as Microsoft Word? Then you’ll know it’s a mess. No two people can edit the document at once, despite editing different parts of the file. Documents written in LaTeX, as well as programs written in languages such as Python can be efficiently shared amongs many users using a Version Control System (VCS) such as Git and everyone can work on it simultaneously without stepping on each other’s toes! VCSs like Git also allows you to backtrack the whole history of your documents in case you regret something you once did.
