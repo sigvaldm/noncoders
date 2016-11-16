@@ -1,23 +1,40 @@
 \chapter{Command Line Interfaces: Handling Files Efficiently}\label{ch:bash}
 10 pages
 \section{Why bash?}
+\index{bash}
+\index{CLI}
+\index{command line interface}
 It seems that many people are a bit scared of the \emph{command line interface} (CLI). But the fact is that it's extremely useful to know just a little bit for a multitude of reasons. For one thing, some things are done much more efficiently in the command line. Knowing the command line also helps giving a better understanding of the compilation of \LaTeX{} documents when we get to \refch{latex}, while for the chapters on Python and Git it is just plain indispensable. Still, perhaps the most important reason to learn about the command line is that it shows up all the time, and knowing just a little bit about it makes you a lot more competent with computers.
 
+\index{operating system}
+\index{OS}
+\index{POSIX}
+\index{shell}
+\index{Linux}
+\index{Unix}
+\index{OS X}
 Linux and OS X are both operating systems (OS) which behaves in a manner similar to the older Unix operating system with respect to at least how commands look and how files are accessed. Such operating systems are often referred to as Unix-like systems or just *nix. To further ensure that they can use the same commands and as such many of the same command line tools, they have been standardized according to the POSIX standard. However, many different command line interfaces, or \emph{Unix shells} exist, which may be slightly different while still being POSIX-compliant, but the most common one is named \emph{bash}. It's been around since 89 and is still going strong.
 
+\index{Windows}
 Windows on the other hand, has its own command line which is non-POSIX compliant. Accordingly, this chapter first deals with bash for the Linux and OS X users, and subsequently with the Windows command line. Skip whichever doesn't fit.  More space is devoted to bash and the reader may also find that bash is presented more as a tool useful on its own, whereas the Windows command line is merely to facilitate what we'll cover in the rest of the book. This reflects how the command lines are typically used in their respective operating systems: bash is simply a more integral part of the workflow in Unix-like systems and comes with more powerful commands. However, Windows 10 now comes with the possibility to enable bash (still a beta feature in the time of writing) and hopefully Windows will become POSIX compliant in the future, rendering the twofold division of this chapter unnecessary.
 
 \section{Which tools you need}
+\index{terminal}
+\index{console}
+\index{Cygwin}
 The command line is shipped with the operating systems (often named \emph{terminal} or \emph{console}) so you do not need to install anything. If you like to try out bash from Windows you can install Cygwin which is available here:
 
 \begin{verbatim}
 http://cygwin.com
 \end{verbatim}
+\index{WSL}
 or in Windows 10, enable the Windows Subsystem for Linux (WSL) and install bash. Neither Cygwin or WSL will be covered herein, though, so you will have to read about those elsewhere.
 
 \section{The file system}
+\index{file system}
 In Windows, the file system starts on a given hard disk or partition, say \verb|C:\|, and from there on you may have folders such as \verb|C:\folder| and files in this folder such as \verb|C:\folder\file|. The hard disk or partition is the starting point for the rest of the file system, and you have one letter per hard disk or partition.
 
+\index{root}
 In Unix-like systems, the file system starts at a \emph{root} directory which we simply denote by \verb|/| (not to be confused with the \emph{root user} to be discussed in \refsec{bash:permissions}). We denote a folder in this root directory like this: \verb|/folder|, and a file inside this folder: \verb|/folder/file|. But we do not have anything like \verb|C:\|. 
 
 We may very well have separate hard disks or partitions within Unix-like file systems, but the division is such that for instance one hard disk hold everything in the root directory, but as soon as you enter a particular folder, for instance \verb|/home|, you enter the \emph{mount point} of another hard disk meaning that everything in this particular sub-folder is located on that other hard disk.
@@ -29,6 +46,8 @@ In Linux, there is a very well defined set of folders which always exists in the
 \section{Linux and OS X}
 
 \subsection{The prompt and commands}
+\index{prompt}
+\index{home folder}
 When opening the command line in Linux or OS X, it typically looks something like this:
 \begin{verbatim}
 peter@laptop:~$
@@ -39,23 +58,29 @@ peter@laptop:~/bills$
 \end{verbatim}
 For simplicity we will from now on use only \texttt{\$} as short-hand for the prompt.
 
+\index{command}
 A command in bash is written in the following way:
 
 \begin{verbatim}
 $ command argument1 argument2
 \end{verbatim}
 
-\verb|command| is here actually just the name of the program which we run, and it may take several \emph{arguments} which are just input we pass to it. It may also have \emph{switches} which turn on and off options. For instance if we want to use a switch called \verb|-s|, the command would look like this:
+\index{switch}
+\index{flag}
+\index{argument}
+\verb|command| is here actually just the name of the program which we run, and it may take several \emph{arguments} which are just input we pass to it. It may also have \emph{switches} (also known as \emph{flags}) which turn on and off options. For instance if we want to use a switch called \verb|-s|, the command would look like this:
 
 \begin{verbatim}
 $ command -s argument1 argument2
 \end{verbatim}
+\index{syntax}
 Such rules for how code is written (its ``sentence structure'') is often called \emph{syntax}. 
 
 \subsection{Navigating}
 \subsubsection{Present working directory (*nix only)}
 First we need to be able to navigate around in folders in the command line. In bash, the prompt is customizable and sometimes do not display the full path, or ``present working directory''. To get it, type (you are encouraged to test out the commands as we go):
 
+\index{\Verb+pwd+}
 \begin{Verbatim}[commandchars=\\\{\}]
 \$ pwd
 /home/peter
@@ -63,6 +88,7 @@ First we need to be able to navigate around in folders in the command line. In b
 Note that the second line does not have a prompt. This is the output from the command you entered, which is only \verb|pwd|. 
 
 \subsubsection{List folders and files}\label{sec:bash:ls}
+\index{\Verb+ls+}
 To show all the files and sub-folders inside the present working directory you can use the ``list'' command \verb|ls|:
 
 \begin{Verbatim}[commandchars=\\\{\}]
@@ -108,6 +134,7 @@ In \reftab{bash:ls} there are some more options you can try out. To get a full o
 $ ls --help
 \end{verbatim}
 
+\index{\Verb+--help+}
 \verb|--help| also works for many other commands, and adding \verb|--help| to a command should be your first attempt at figuring out how it works. Since ``help'' is a whole word rather than just a letter, the most common syntax is to use two dashes.
 
 The options with a single dash, can often be combined. For instance, the following two commands are equivalent:
@@ -133,7 +160,7 @@ You can see that the file sizes is now specified in kilobytes due to \verb|-h| a
 In Unix, folders and files starting with a period are \emph{hidden} and to show them we must use \verb|-a|. The folders \verb|.| and \verb|..| are special: \verb|.| is always the current folder (present working directory), while \verb|..| is the parent folder (one level up). Their usefulness will become more evident as we proceed.
 
 \subsubsection{Change directory}
-
+\index{\Verb+cd+}
 Whenever you want to enter a folder, you use the ``change directory'' command, e.g.\ to enter \verb|folder1|:
 
 \begin{verbatim}
@@ -150,6 +177,7 @@ Notice that to enter \verb|folder 2|, you can not write
 \begin{verbatim}
 cd folder 2
 \end{verbatim}
+\index{escape}
 since the computer will interpret this as a command having two arguments separated by a space: \verb|folder| and \verb|2|. Therefore, you must either \emph{escape} the space like this:
 
 \begin{verbatim}
@@ -161,6 +189,8 @@ or enclose the argument in `` and '':
 cd "folder 2"
 \end{verbatim}
 
+\index{absolute path}
+\index{relative path}
 Some further examples to test and expand your understanding can be found in \reftab{bash:cd}. Note that paths starting with the root directory (\verb|/|) or home folder (\verb|~|) renders to be the same file/folder no matter what your present working directory is. Such folders are coined \emph{absolute paths}, whereas paths which specifies a file relative to you present working directory are labeled \emph{relative paths}. The top four examples in \reftab{bash:cd} use relative paths while the remaining four use absolute paths. Beware, thought, that \verb|~| varies according to which user you are logged in as.
 
 \begin{table}
@@ -183,6 +213,7 @@ Some further examples to test and expand your understanding can be found in \ref
 \subsection{Creation and destruction}
 To make a new directory \verb|newfolder| type:
 
+\index{\Verb+mkdir+}
 \begin{verbatim}
 $ mkdir newfolder1
 \end{verbatim}
@@ -193,11 +224,13 @@ $ mkdir newfolder2 newfolder3
 \end{verbatim}
 Similarly, new empty text files can be created using \verb|touch|:
 
+\index{\Verb+touch+}
 \begin{verbatim}
 $ touch newfile1 newfile2 newfile3
 \end{verbatim}
 If the file already exists, \verb|touch| merely changes the ``last changed'' time to the current time (i.e.\ more like a gentle touch than actual editing). Use \verb|ls| to verify that the files and folders were indeed made.
 
+\index{\Verb+rm+}
 Files are delete/remove using \verb|rm|, which also takes an arbitrary number of arguments:
 \begin{verbatim}
 $ rm newfile1 newfile2 newfile3
@@ -220,6 +253,8 @@ $ rm -r newfolder*
 In this context ``recursive'' simply means it will also remove the contents within the folders. Beware that \verb$rm$ do not ask if you are sure before it deletes something. If you've managed to write the command correctly, it assumes that you are sure, and it will be properly deleted, i.e.\ not put in a trash bin.
 
 \subsection{Copying, moving and renaming}
+\index{\Verb+cp+}
+\index{\Verb+mv+}
 \verb|mv| and \verb|cp| are used to moving and copying files and folders, respectively, and have similar syntax which is:
 
 \begin{verbatim}
@@ -297,6 +332,7 @@ $ mv *.JPG images
 \end{verbatim}
 Done! Beat this in the graphical interface. Make sure you understand this example.
 
+\index{\Verb+rename+}
 \verb|mv| is great for most purposes, but as pointed out earlier, you cannot \emph{rename} multiple files at once using it since they all have the same \verb|<destination>|. \verb|rename| is a tool which can rename multiple files at once by using pattern-matching, it has the following syntax:
 
 \begin{verbatim}
@@ -320,6 +356,11 @@ here, the expression to match is empty (only enclosed by quote marks), which mak
 \subsection{View and edit text files}
 Viewing text files in bash is straight forward, but there exists a bunch of different viewers (and editors). Some of the most common ones and how they differ are listed in \reftab{bash:editors}. To use one of them, simply type its name followed by the file to view, e.g. to use \verb|cat| to view \verb|document.txt|:
 
+\index{\Verb+cat+}
+\index{\Verb+more+}
+\index{\Verb+less+}
+\index{\Verb+head+}
+\index{\Verb+tail+}
 \begin{verbatim}
 $ cat document.txt
 \end{verbatim}
@@ -343,6 +384,8 @@ Find (or create) some plain text file (e.g.\ not a full MS Word document but typ
 \end{table}
 
 \subsubsection{Nano}
+\index{Nano}
+\index{\Verb+nano+}
 Two full editors which also allows editing the documents are presented in this list. \emph{Nano} is the simpler one of the two and it basically behaves how you would expect, perhaps except that you have to navigate using the arrows instead of the mouse. At the bottom of the program, there's a list of shortcuts which is reproduced here in \reffig{bash:nano}. For the instance the shortcut \verb|^X| means that you can hit Ctrl+X to exit Nano. The \verb|^| character means ``Ctrl+''. Next, Nano may ask if you want to save your changes, and you answer simply by pressing Y or N. At all times, Nano will maintain a list of available control keys at the bottom so you don't really have to remember anything.
 
 \begin{figure}
@@ -353,6 +396,9 @@ Two full editors which also allows editing the documents are presented in this l
 \end{figure}
 
 \subsubsection{Vim}
+\index{Vim}
+\index{Vi}
+\index{\Verb+vi+}
 The other editor is an old classic named \emph{Vi}, or actually we're going to use an improved version of Vi named \emph{Vi Improved} (Vim). On most systems Vim and not Vi is what shows up when you use the command \verb|vi|. While Vim is a very powerful and convenient editor once you're used to it, it's not at all intuitive, and many users otherwise familiar with the command line suddenly feel helpless once a file is opened in Vim. In fact, the only reason such a ``difficult'' editor is presented here, is because you're likely to stumble upon it.
 
 Vim operates with different \emph{modes}. Initially, you'll be in \emph{command mode} (see \reffig{bash:vi}) where the letter keys are not used to write text into the document, but rather acts as shortcuts to do various operations (a better name would perhaps have been \emph{shortcut mode}). To enter the \emph{insert mode}, press Insert and the text \verb|--INSERT--| shows up in the last line in the window. Now you can edit text similarly as in Nano. Hitting Insert again makes you toggle between insert and \emph{replace mode} (where you what you type replaces existing text). To get back to (the default) command mode, hit Esc. Now to quit Vim, you first need to enter \emph{last line mode} by typing colon (\verb|:|) while in command mode. In last line mode, you can type short commands to save the document, quit Vim, and so on (actually I would've preferred if \emph{this} was named command mode). The most important commands are listed in \reftab{bash:vi}. Try to open, edit, save and quit a document using Vim. If you don't like it, feel free to use Nano or a graphical editor instead. It's just nice to be aware of Vim.
@@ -378,9 +424,13 @@ Vim operates with different \emph{modes}. Initially, you'll be in \emph{command 
 \end{figure}
 
 \subsection{Permissions}\label{sec:bash:permissions}
+\index{permissions}
 \subsubsection{Users and groups}
+\index{users}
+\index{groups}
 About time to get back to the first columns we get when using \verb|ls -l| (see \refsec{bash:ls}). In Unix-like systems, there are \emph{users} (e.g.\ ``peter'') and \emph{groups}, and each user may belong to multiple groups. Indeed, you may feel that you only need one user on your own personal computer, but most operating systems support computers, or networks of computers, with multiple users. In many offices, for instance, users log on to a network where their user is only one of many.
 
+\index{\Verb+groups+}
 To see which groups you belong to is simple:
 
 \begin{verbatim}
@@ -391,6 +441,8 @@ Anyhow, each file is owned by one user, and is associated with one group. The ow
 
 The owner may have different permissions than the other members of the group. For instance, maybe you want to share some information stored in a text file with a bunch of people who you collaborate with in a top secret project, but you don't want them to be able to edit its contents on behalf of you. In this case, a group would be made for the members of the project, and that group would be given \emph{reading} permission only. The owner, you, would have both \emph{reading} and \emph{writing} permission. Since the project is top secret, users who do not belong to the group don't have any permissions.
 
+\index{symbolic link}
+\index{flag}
 The first column in the \verb|ls -l| output is a string of \emph{flags}, that is, options which can either be on or off, which decides which permissions different categories of users have. If all flags are on, the string of flags looks like in \reffig{bash:permissions}. The first letter is not strictly speaking a permission flag, but it is \verb|d| if the item is a directory or \verb|l| if it is a \emph{symbolic link} (or \emph{shortcut} in Windows terminology). It may also be \verb|s| or \verb|t| but we won't cover those here. For most files, it is just \verb|-|.
 
 \begin{figure}
@@ -405,8 +457,11 @@ Further on, there are three blocks of the three letters \verb|rwx|. The first bl
 To make a few examples, the text file in the top secret project would have permission mode \verb|-rw-r-----|. A folder would typically be \verb|drwxr-xr-x| which means that all users can open (execute) it and read its contents but only the owner can add files to it. Whether users can read the files within it depends on the permission mode of \emph{those} files.
 
 \subsubsection{The superuser}
+\index{superuser}
+\index{root}
 Normal users mostly have only reading permission outside their own home folder. This means you can run all the programs installed on your computer, but you cannot tinker with it. It also prevents malicious software from infecting your system through your user since your user cannot grant it permission to the system files. This is one of the reasons why Unix systems are generally regarded more safe than Windows, although Microsoft lately has become better at not letting users permanently run the Administrator user.
 
+\index{\Verb+sudo+}
 On all Unix systems there is a superuser named \emph{root} (not to be confused with the \emph{root directory}). This user has the special privilege that it can do anything. It is similar to \emph{Administrator} in Windows systems, but is even more powerful. You normally cannot log in to this user, but if you are on the \emph{sudoers list} you are kind of regarded as a system administrator and are allowed to run one command at a time as root by using the ``superuser do'' command \verb|sudo|. To illustrate, one could go to a folder you do not have write permission to (e.g.\ \verb|/etc|) and try to create a new file:
 
 \begin{verbatim}
@@ -422,6 +477,7 @@ $ sudo touch newfile
 Normally you would be on the sudoers list on your own personal computer, but in larger networks (e.g.\ offices) this privilege would be restricted to the system administrators only. Be careful when using \verb|sudo|. Don't run software you don't know what is using the superuser.
 
 \subsubsection{Changing permissions}
+\index{\Verb+chmod+}
 Now that we know what it all means, it's time to learn how to change permission. Changing permission mode can be done with \verb|chmod|:
 
 \begin{verbatim}
@@ -458,6 +514,8 @@ $ chmod a+rx file*
 
 At last, changing group and owner can be done by the following commands:
 
+\index{\Verb+chown+}
+\index{\Verb+chgrp+}
 \begin{verbatim}
 $ chgrp <group> <file(s)>
 $ chown <owner> <file(s)>
@@ -471,6 +529,8 @@ $ sudo chown <owner> <file(s)>
 Often you do not need to bother too much about the permission flags, but once in a while you get an error such as ``Permission denied'' and now you know that you can fix it either using \verb|chmod| or \verb|sudo|. Nobody goes around remembering exactly how all commands work. The important thing is to know what is possible and where to figure out how to use it when you need it.
 
 \subsection{Advanced example: backup}
+\index{backup}
+\index{\Verb+rsync+}
 We have seen how to use \verb|cp| which is excellent for small copying tasks. One operation which is dreaded by most people, though, is taking backup of large folders. All of a sudden maybe there's a file which couldn't be read. You deal with the file somehow and start again, but then you get asked a thousand times if you're sure you want to overwrite the files you successfully copied there the first time around. For such things, \verb|rsync| is perfect.
 
 Unlike copying in the graphical user interface, \verb|rsync| does not stop every time a single file couldn't be copied. It just prints an error and proceeds. Moreover, if the copying is interrupted, it will proceed where you left of the next time you run the command. It's even able to proceed midways in a file if you're copying big files. \verb|rsync| has a similar syntax as \verb|cp|:
@@ -478,6 +538,7 @@ Unlike copying in the graphical user interface, \verb|rsync| does not stop every
 \begin{verbatim}
 $ rsync <source> <destination>
 \end{verbatim}
+\index{mount}
 Let's say we want to copy all your personal files, which on Unix-like systems usually is limited to your home folder. By only copying the home folder we avoid copying a bunch of program and system files. We'd like to copy them to an external hard drive, which on Unix-like systems is \emph{mounted} as a folder. To make sure it is mounted, you can simply open it in the graphical user interface, and find its path there. You can also try to figure out how to use the commands \verb|mount| and \verb|umount|, which are not covered here.
 
 Let's assume your drive is mounted to \verb|/media/mydrive| and that you've created a folder \verb|/media/mydrive/backup| which is the destination of your backup. The source is \verb|~/*|, everything in your home folder. To copy folders, we need to include the recursive switch \verb|-r|. Then a correct way to do this operation would be:
@@ -488,6 +549,9 @@ $ rsync -r ~/* /media/mydrive/backup
 However, \verb|rsync| by default doesn't say much, so after a few hours maybe we'll start wondering if anything is actually happening. By using the \verb|-v| switch we make \verb|rsync| more \emph{verbose} (talkative), such that we can see which file it's currently copying. But then, if you leave your computer maybe for hours, you're unlikely to spot which files couldn't be copied.
 
 \subsubsection{Redirecting output}
+\index{standard output}
+\index{standard error}
+\index{output redirection}
 Everything which is output to terminal is output in one of two ways: Either, it's \emph{standard output}, which covers most of what you see, or if something goes wrong, it's \emph{standard error}. It's possible to \emph{redirect} either output such that it's not printed to the terminal but instead to a text file using any of the operators listed in \reftab{bash:redirection}. For our case, we may like to view the progress on screen but to filter out all errors to a text file so we can go through them afterwards. Then, we could write:
 
 \begin{verbatim}
@@ -529,8 +593,10 @@ Note that omitting \verb|./| will not work although it's a perfectly legitimate 
 One common pitfall you should be aware of is that the executable flag of \verb|program| must be set or you will get ``permission denied''. Setting the executable flag to programs and scripts is perhaps the most frequent use of \verb|chmod|. See \refsec{bash:permissions}.
 
 \subsubsection{Bash scripting}
+\index{script}
 It is also possible to write \emph{bash scripts} which are small program snippets written in bash, typically stored in files ending with .sh. We will only skim the surface of shell scripting here, and you are not expected to be able to write your own scripts afterward. You can learn Python in \refch{python} which is both easier, more powerful and more versatile. However, it can be instructive just to see an example of how a bash script is written.
 
+\index{shebang}
 We'll proceed with our backup example, and make a file called \verb|backup.sh| which makes backups for you using \verb|rsync|. The script can be seen in \reflst{bash:script}. The first line is known as a \emph{shebang} (since it starts with a ``hash'' and a ``bang''/exclamation mark character) and simply tells the shell that this is a bash script. Following this, you can write bash commands as usual, and when the script is executed, bash will run one command after the other.
 
 \begin{listing}
@@ -582,6 +648,7 @@ $ apt-cache search <keyword>
 \end{verbatim}
 
 \subsection{Advanced example: ImageMagick}
+\index{ImageMagick}
 If you want to do something to many files (\emph{batch processing}), chances are its better to figure out a way to do it in the command line. You may have to search the web to find the right tools, since it is impossible to cover everything you might need in a small book (or any book for what matters). We'll cover one more such tool as an example, however.
 
 Maybe you wouldn't think about editing images in the command line, but some editing is just incredibly convenient to do in the command line using a tool named ImageMagick. ImageMagick can be installed on Linux, OS X \emph{and} Windows, but is often pre-installed in Linux (TBD).
@@ -589,11 +656,13 @@ Maybe you wouldn't think about editing images in the command line, but some edit
 \subsubsection{Auto-crop}
 Consider that you've made an illustration for a document such as the one depicted in \reffig{bash:trim}, but the program left out a large white area around it which you want to get rid of. This is easy using ImageMagick's command \verb|convert|:
 
+\index{\Verb+convert+}
 \begin{verbatim}
 $ convert -trim before.png after.png
 \end{verbatim}
 The result can be seen in \reffig{bash:trim}. It couldn't have been simpler.
 
+\index{\Verb+mogrify+}
 The command \verb|mogrify| works in exactly the same way as \verb|convert| except that it can take many files, for instance to do this to all .png files in a folder:
 
 \begin{verbatim}
