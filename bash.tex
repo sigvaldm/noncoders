@@ -1,5 +1,6 @@
 \chapter{Command Line Interfaces: Handling Files Efficiently}\label{ch:bash}
-10 pages
+% Goal: 10 pages
+
 \section{Why bash?}
 \index{bash}
 \index{CLI}
@@ -24,9 +25,9 @@ Windows on the other hand, has its own command line which is non-POSIX compliant
 \index{Cygwin}
 The command line is shipped with the operating systems (often named \emph{terminal} or \emph{console}) so you do not need to install anything. If you like to try out bash from Windows you can install Cygwin which is available here:
 
-\begin{verbatim}
-http://cygwin.com
-\end{verbatim}
+~\\
+\urlone{http://cygwin.com}
+
 \index{WSL}
 or in Windows 10, enable the Windows Subsystem for Linux (WSL) and install bash. Neither Cygwin or WSL will be covered herein, though, so you will have to read about those elsewhere.
 
@@ -647,7 +648,7 @@ $ sudo apt-get install <package(s)>
 $ apt-cache search <keyword>
 \end{verbatim}
 
-\subsection{Advanced example: ImageMagick}
+\subsection{Advanced example: ImageMagick}\label{sec:bash:imagemagick}
 \index{ImageMagick}
 If you want to do something to many files (\emph{batch processing}), chances are its better to figure out a way to do it in the command line. You may have to search the web to find the right tools, since it is impossible to cover everything you might need in a small book (or any book for what matters). We'll cover one more such tool as an example, however.
 

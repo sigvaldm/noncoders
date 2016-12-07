@@ -14,24 +14,47 @@
 \usepackage{makeidx}
 \usepackage{multirow}
 \usepackage{lipsum}
+\usepackage{lmodern}
+\usepackage[hidelinks]{hyperref}
+\usepackage{amssymb}
+\usepackage{gensymb}
+\usepackage{array}
+\usepackage{siunitx}
+\usepackage[answerdelayed]{exercise}
+%\usepackage[Bjornstrup]{fncychap}
+
+% EXERCISES
+
+\def\ExerciseListName{Exercise}%
+
+\renewcommand{\ExerciseListHeader}{\ExerciseHeaderDifficulty%
+\textbf{\ExerciseListName\ \ExerciseHeaderNB%
+\ \ \ExerciseHeaderTitle}%
+\ExerciseHeaderOrigin\ignorespaces}
+
+\renewcommand{\AnswerListHeader}{\textbf{\ExerciseListName\ \ExerciseHeaderNB\ \ %
+}}
+
+
+\newcommand{\bibtex}{\textsc{Bib}\!\TeX}
 
 \definecolor{folder}{HTML}{325fcf}
 
-\setminted[latex]{frame=lines,linenos,autogobble}
-\setminted[bash]{frame=lines,linenos,autogobble}
+\setminted[latex]{autogobble,tabsize=4}
+\setminted[bash]{frame=lines,linenos,autogobble,tabsize=4}
 \newcommand{\ignore}[1]{} % Does nothing. \ignore{$} to trick highlighting.
 
 \newcommand{\latexin}{\mintinline{latex}}
+\newcommand{\latexmin}{\latexin}
 \newcommand{\latexone}{\mint[frame=none,numbers=none]{latex}}
+\newcommand{\urlone}[1]{\noindent\url{#1}\\}
 
 \newcommand{\reflst}[1]{Listing~\ref{lst:#1}}
 \newcommand{\reffig}[1]{Figure~\ref{fig:#1}}
 \newcommand{\refch}[1]{Chapter~\ref{ch:#1}}
 \newcommand{\refsec}[1]{Section~\ref{sec:#1}}
 \newcommand{\reftab}[1]{Table~\ref{tab:#1}}
-
-\hyphenation{tech-nol-o-gy cryp-tog-ra-phy}
-\hyphenation{tech-nology crypto-graphy}
+\newcommand{\refeq}[1]{(\ref{eq:#1})}
 
 \renewcommand{\dateseparator}{.}
 
@@ -43,17 +66,25 @@
 
 \begin{document}
 
+\frontmatter
+
 \maketitle
-
 \input{license}
-
 \tableofcontents
+
+\mainmatter
 
 \input{introduction}
 \input{bash}
 \input{python}
 \input{latex}
 \input{git}
+
+\appendix
+
+\input{answers}
+
+\backmatter
 
 \printindex
 
