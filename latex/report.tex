@@ -1,0 +1,42 @@
+\documentclass[a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage{amsmath,amssymb,gensymb,graphicx,multirow}
+
+\title{Title}
+\author{Author}
+\date{\today}
+\setcounter{tocdepth}{1} % Table of contents only includes down to sections
+\bibliographystyle{plain}
+
+\begin{document}
+
+\pagenumbering{gobble}   % No page numbers
+\maketitle
+\clearpage
+
+\pagenumbering{roman}    % Page numbers i, ii, iii, iv, ...
+\section*{Abstract}      % The star makes this unnumbered
+\clearpage
+
+\tableofcontents         % Include the tables which suit you
+% \listoffigures
+% \listoftables
+\clearpage
+
+\pagenumbering{arabic}   % Page numbers 1, 2, 3, 4, ...
+\section{Introduction}
+\section{Background}     % Aka Theory
+\section{Method}
+\section{Results}
+\section{Discussion}
+\section{Conclusion}
+
+\clearpage
+\bibliography{main}
+
+\appendix                % Appendices are added after this
+%\section{...}
+
+\end{document}

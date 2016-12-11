@@ -8,17 +8,11 @@ We all have to write documents from time to time, be it a CV, a scientific artic
 \index{WYSIWYG}
 Whether you are writing articles in Microsoft Word or LibreOffice Writer, or making a slideshow presentation in Microsoft PowerPoint or LibreOffice Impress, the focus is to a large extent on how stuff looks (what-you-see-is-what-you-get --- WYSIWYG). You as the author are often left with the responsibility of tweaking such typographic details as placement, font, text size, margins, etc. Unless you're schooled in typography, chances are you'll make a lot of mistakes which may seem subtle, but which is the difference between poor and professional typesetting.
 
-With \LaTeX{} on the other hand, the writer focuses on what stuff \emph{is} and \LaTeX{} will take care of how stuff \emph{looks}. You may for instance declare that something is a title or a paragraph, but you do not get to typeset it. You may choose to emphasize a word, but \LaTeX{} chooses how (e.g. underlined, italic, bold, etc.). While it may feel unfamiliar at first that \LaTeX{} takes control of the looks of your document, it ensures a high typographic standard. Try to not to insist on having \LaTeX{} do things your way. There's usually a good reason it works the way it does.
+With \LaTeX{} on the other hand, the writer focuses on what stuff \emph{is} and \LaTeX{} will take care of how stuff \emph{looks}. You may for instance declare that something is a title or a paragraph, but you do not get to typeset it. You may choose to emphasize a word, but \LaTeX{} chooses how (e.g. underlined, italic, bold, etc.). While it may feel unfamiliar at first that \LaTeX{} takes such control of the looks of your document, it ensures a high typographic standard. Try to not to insist on having \LaTeX{} do things your way. There's usually a good reason it works the way it does.
 
-The downside of declaring what stuff \emph{is}, is that it has to be done using code, and consequentially, there's a steeper learning curve. Indeed, you will probably spend more time writing documents as you start out with \LaTeX{} than you did previously, but you will also achieve nicer results. As you gain more experience, you may find that you don't even spend significantly more time writing in \LaTeX{} than in WYSIWYG tools, you just spend your time differently. Rather than tweaking typographic details manually, you will spend time looking for just the right \LaTeX{} command.
-
-%Most people need to write text documents from time to time, be it a CV, an article or a school assignment. Especially if you're writing something you'll use in your profession, you likely want it to \emph{look} professional which usually is not the case when you use tools like Microsoft Word or LibreOffice Writer. With these what-you-see-is-what-you-get (WYSIWYG) tools, the author spends time manually tweaking how stuff looks; where the title is, which fonts to use, text sizes, and placement. Most of us are not interested enough in typography to do this right. In comparison, using \LaTeX{}, the writer focuses on what stuff \emph{is}, rather than how stuff \emph{looks}. By telling \LaTeX{} ``this is a title'', or ``this is a new paragraph'' \LaTeX{} itself will figure out the proper formatting. It may seem unfamiliar at first that \LaTeX{} decides how stuff looks, indeed many novices try to force \LaTeX{} to display stuff in a particular way. My advice: don't!
-
-%\LaTeX{} certainly comes with a higher learning barrier before you can use it than WYSIWYG tools, but once you get familiar with it, I think you'll find that using it actually isn't that much slower, and it produces much better results. You may find a shift in what you spend time on: less time manually placing stuff, more time looking for how to do ``this thing'' with \LaTeX{} on the internet.
+The downside of declaring what stuff \emph{is}, is that it's better done using code, and consequentially, there's a steeper learning curve. Indeed, you will probably spend more time on your documents as you start out with \LaTeX{} than you did previously, but you will also achieve nicer results. As you gain more experience, you may find that you don't even spend significantly more time writing in \LaTeX{} than in WYSIWYG tools, you just spend your time differently. Rather than tweaking typographic details manually, you will spend time looking for just the right \LaTeX{} command.
 
 While there are other typesetting tools out available, \LaTeX{} is one of the most widely used, especially in scientific circles. \LaTeX{} is also based on \TeX{} which is developed by the computer science pioneer Donald Knuth, who is famous for having few bugs in his programs. If there should be one typesetting tool in your toolbox it has to be \LaTeX{}.
-
-%Other professional typesetting tools exist as well, but \LaTeX{} is very well developed and by far the most widespread, at least in scientific publications and books. We'll also see how to use it for making slideshow presentations, thus replacing tools such as Microsoft PowerPoint. If there's one typesetting tool you want in your toolbox to it's definitely \LaTeX{}.
 
 \section{Which Tools You Need}
 \index{highlighting}
@@ -29,7 +23,7 @@ To get \LaTeX{}, you need to install a \LaTeX{} distribution. There are several 
 
 \paragraph{Linux}
 \index{TeX Live}
-On Linux, TeX Live is the recommended distribution. On Debian-based Linuxes such as Ubuntu or Mint, you can install TeX Live and Texmaker using the following command:
+On Linux, TeX Live is the recommended distribution. On Debian-based Linuxes such as Ubuntu or Mint, you can install TeX Live and Texmaker by entering into the terminal
 \begin{verbatim}
 $ sudo apt-get install texlive-full texmaker
 \end{verbatim}
@@ -50,7 +44,7 @@ For Windows either TeX Live or MiKTeX can be used, but many find MiKTeX slightly
 \urlone{http://www.miktex.org}
 \urlone{http://www.xm1math.net/texmaker}
 
-It is also useful to know a program or two with which you can make nice illustrations and images for your documents. Since this is not coding it falls outside the scope of this book. A few recommendations are made though, to complement your knowledge in \LaTeX.  
+It is also useful to know a program or two with which you can make nice illustrations and images for your documents. Since this is not coding it falls outside the scope of this book, but a few recommendations are made to complement your knowledge in \LaTeX.  
 
 An excellent tool for making illustrations is InkScape. Gimp is also useful, in particular for photos, but it is not as suited for illustrations as InkScape. They can be installed as follows:
 
@@ -70,7 +64,7 @@ If you plan to use text labels inside your illustrations you may also want to do
 
 
 \section{Hello World!}
-We will start by going through \reflst{latex:minimal} which is about the minimum code required to start a new document. The left part is the source code while the right part demonstrates the output produced by the code. The actual result will necessarily be slightly different, since it will be placed in its own document with its margins and formatting, but a demonstration may be instructive nonetheless.
+We will start by going through \reflst{latex:minimal} which is about the minimum code required to start a new document. The left part is the source code while the right part demonstrates the output produced by the code. The actual result will necessarily be slightly different, since it will be placed in its own document with its margins, but a demonstration may be instructive nonetheless.
 
 \begin{listing}
 	\rule{\textwidth}{0.4pt}
@@ -95,7 +89,7 @@ Notice that all \LaTeX{}-\emph{commands} start with a backslash, and may be foll
 \noindent Such ``rules'' for how commands are structured is usually referred to as \emph{syntax}.
 
 \index{\latexin{\documentclass}}
-The first command in any document is \latexin{\documentclass} which tells \LaTeX{} what kind of document it is. Some possible arguments are shown in \reftab{latex:documentclass}. The option \latexin{a4paper} tells \LaTeX{} to produce a document in paper size A4. \latexin{\documentclass} also support options for other paper sizes, font sizes, etc.\ which you can find on the internet whenever you need it.
+The first command in any document is \latexin{\documentclass} which tells \LaTeX{} what kind of document it is. Some possible arguments are shown in \reftab{latex:documentclass}. The option \latexin{a4paper} tells \LaTeX{} to produce a document in paper size A4. \latexin{\documentclass} also support options for other paper sizes, font sizes, etc. Rather than listing them here, however, we encourage you to look up such information on the internet when you need to. This is an important step towards becoming self-going.
 
 \begin{table}
 	\centering
@@ -107,7 +101,7 @@ The first command in any document is \latexin{\documentclass} which tells \LaTeX
 	\latexin{article}	&	For articles and smaller documents. Excludes chapters.					\\
 	\latexin{letter}		&	For letters.																\\
 	\latexin{beamer}		&	For	slideshow presentations using the Beamer package.						\\
-	\latexin{curve}		&	For CVs using the Curve package.
+	\latexin{moderncv}	&	For CVs using the ModernCV package.
 	\end{tabular}
 	\label{tab:latex:documentclass}
 \end{table}
@@ -149,23 +143,18 @@ In Texmaker you can ensure files are stored as UTF-8 by going to Options$\righta
 \index{compilation}
 \index{\verb|latex|}
 \index{\verb|pdflatex|}
-The next step is to compile our minimal example to turn it into a .pdf file. The minimal example from \reflst{latex:minimal} can be saved to a UTF-8 encoded file \texttt{main.tex} in a new folder. You \emph{do} want to create a separate folder for each document you write since \LaTeX{} generates lots of other files in this folder upon compilation.
+The next step is to compile our minimal example to turn it into a .pdf file. The minimal example from \reflst{latex:minimal} is first saved to a UTF-8 encoded file \texttt{main.tex} in a new folder. You \emph{do} want to create a separate folder for each document you write since \LaTeX{} generates lots of other files in this folder upon compilation.
 
-One should be aware that people use different compilation strategies. Some people use the program \texttt{latex} which generates a .dvi file and then converts it to .pdf using a conversion tool, while we will use the program \texttt{pdflatex} which directly generates the .pdf file. Both of these are command line programs but Texmaker can run these commands so we don't have to. However, to better grasp what's going on behind the curtains, we will see how it's done both from the command line and from Texmaker. If you haven't read \refch{bash} yet, don't worry. You don't need to be able to run the commands to proceed this chapter.
+To compile \verb|main.tex| select ``PDFLaTeX'' in the left drop down menu shown in \reffig{latex:texmaker} (where it says ``Quick Build'') and push the arrow to the left of it. This is the same as navigating to the folder the file is in using the terminal and execute
 
-\paragraph{Using the Command Line}
-To compile \texttt{main.tex} using the (Linux, OS X or Windows) command line, navigate to the folder where the file is, and simply run:
 \begin{verbatim}
 $ pdflatex main.tex
 \end{verbatim}
-and a file named \verb|main.pdf| will be created. If you got no errors you're done.
+or equivalently, just
 
-But computers are very literal and errors is the most common thing. If there's a typo somewhere in your code, e.g. a capital letter instead of a small one in a command, the document simply will not compile, but returns an error. The error messages may look cryptic at first, but they do tell what the error is and which line it is on. You can exit the failed compilation in the command line by typing ``x''. Try to sort out one error at a time, starting with the top one.
-
-Sometimes, when you have an error in your code, and you can't figure out what it is, it may be useful to \emph{comment out} a block of lines. Texmaker supports commenting out multiple lines by marking them and hitting Ctrl+T. Uncommenting the marked lines is done by Ctrl+U. Another advice: Compile your document often to avoid a bunch of errors to accumulate. Fixing errors is perhaps the largest barrier when starting to program, but it gets a lot easier with a little experience.
-
-\paragraph{Using Texmaker}
-Next: compile using Texmaker. We can use the arrow next to the ``Quick Build'' drop down menu (see \reffig{latex:texmaker}) to run any of the programs available from the drop down menu. As an example, we can choose ``PDFLaTeX'' and click the arrow, and to view it, we can click the arrow next to ``View PDF''. The ``Quick Build'' option is useful, since it can be configured to run a series of commands in sequence. If you again go to Options$\rightarrow$Configure~Texmaker and select the ``Quick Build'' pane you can set Quick Build to ``PdfLaTeX + View PDF''. In the ``Commands'' pane, you can see exactly which commands Texmaker uses when running this programs. These are fine as they are. Now, when you choose ``Quick Build'' and click the arrow, the document will be compiled and displayed. Like when using the command line errors must be resolved to make the document compile.
+\begin{verbatim}
+$ pdflatex main
+\end{verbatim}
 
 \begin{figure}
 	\centering
@@ -174,7 +163,21 @@ Next: compile using Texmaker. We can use the arrow next to the ``Quick Build'' d
 	\label{fig:latex:texmaker}
 \end{figure}
 
-To build actual skills one must practice and not just read about coding. It does not have to take much time if you only want to master the basics (which is a start), but some practice is an absolute necessity. To help you with this we sometimes provide suggested exercises, some of which have suggested answers in \refch{answers}. It's up to you if you want to do the exercises or if you want to find other means of practicing. It may also be a good idea to try out examples as you go. Perhaps the best practice, though, are real-world examples, so if you have any project, don't hesitate. That's the kind of practice which makes perfect!
+You can now open the file, either by double clicking it in its folder, or by selecting ``View PDF'' from the right drop down menu in Texmaker and pushing the arrow.
+
+The ``Quick Build'' option in the left drop down box is handy because it can be configured to both compile and open the PDF document at once. To do that, go to Options$\rightarrow$Configure~Texmaker and select the ``Quick Build'' pane. Select the desired sequence (it might look slightly different in Texmaker):
+
+\begin{center}
+	\verb|pdflatex| $\rightarrow$ View PDF
+\end{center}
+
+If you're lucky, you've now successfully compiled your first \LaTeX{} document. But computers are very literal and errors is the most common thing. If there's a typo somewhere in your code, e.g. a capital letter instead of a small one in a command, the document simply will not compile, but returns an error. The error messages may look cryptic at first, but they do tell what the error is and which line it is on. Try to sort out one error at a time, starting with the top one. Another advice is to compile your document often to avoid errors to accumulate.
+
+Sometimes, when you have an error in your code, and you can't figure out what it is, it may be useful to \emph{comment out} a block of lines. Texmaker supports commenting out multiple lines by marking them and hitting Ctrl+T. Uncommenting the marked lines is done by Ctrl+U.  Sometimes you may also get more information on what went wrong if you try to compile using the command line. If you're \emph{really} stuck, you may have to delete some of the auxiliary files you didn't create yourself. In Texmaker, this is done using Tools$\rightarrow$Clean. Fixing errors is perhaps the largest barrier when starting to program, but it gets a lot easier with a little experience.
+
+At last, some people prefer to compile using the program \verb|latex| rather than \verb|pdflatex|. This works in exactly the same way, but you get a DVI file instead of a PDF file. There's some other subtle differences as well. We recommend sticking with \verb|pdflatex|.
+
+To build actual skills one must practice and not just read about coding. It does not have to take much time if you only want to master the basics (which is a start), but some practice is an absolute necessity. To help you with this we sometimes provide suggested exercises, some of which have suggested answers in \refapp{answers}. It's up to you if you want to do the exercises or if you want to find other means of practicing. It may also be a good idea to try out examples as you go. Perhaps the best practice, though, are real-world examples, so if you have any project, don't hesitate. That's the kind of practice which makes perfect!
 
 \section{Exercises}
 \begin{ExerciseList}
@@ -318,11 +321,11 @@ I said, \emph{this is \emph{very} important!}
 \index{\latexin{\subsubsection}}
 A new chapter is started using the \latexin{\chapter} command, with the name of the chapter as its argument. Chapters can be split into \emph{sections} using the \latexin{\section} command, which again can be split into \emph{subsections} (\latexin{\subsection}) and further on to \emph{subsubsection} (\latexin{\subsubsection}). See \reflst{latex:structure} for an example. Numbering of chapters, sections and so on happen automatically.
 
-\begin{listing}[H]
+\begin{longlisting}
 	\inputminted[frame=lines,linenos]{latex}{latex/structure.tex}
 	\caption{A \LaTeX{} document with some structure and text}
 	\label{lst:latex:structure}
-\end{listing}
+\end{longlisting}
 
 A chapter is a rather big, voluminous entity. The chapter's title may well consume approximately half a page, like in this book. In smaller documents like articles, school assignments, etc., which may only be a few pages long, this is not appropriate. The  \latexin{article} document class is suitable in such cases since it does not have chapters. There, sections are the highest structural level.
 
@@ -349,7 +352,7 @@ As your document gets bigger, your \verb|main.tex| file may start looking like a
 %	\caption{A chapter put into a separate file}
 %	\label{lst:latex:introduction}
 %\end{listing}
-Note that \verb|main.tex| still is the file you need to compile. Compiling e.g.\ \verb|introduction.tex| produces an error.
+Note that \verb|main.tex| still is the file you need to compile. Compiling e.g.\ \verb|introduction.tex| produces an error. Texmaker in normal mode compiles the file you're currently editing, meaning that you must select \verb|main.tex| before compiling. However, if you set the current file to master by choosing ``Options$\rightarrow$Define Current Document as `Master Document' '' you will always compile that file. You can switch back to normal mode the same place.
 
 \section{Title Page}\label{sec:latex:title}
 \index{\latexin{\maketitle}}
@@ -1282,10 +1285,16 @@ It resembles the \latexin{tabular} environment in that \latexin{&} separates ``c
 \end{ExerciseList}
 
 \section{Bibliography}
+\index{\bibtex}
 The standard tool to make a bibliography (list of references) in \LaTeX{} is \bibtex{}. \bibtex{} is a whole new universe with its own syntax and features, but we will limit ourselves to the most important parts.
 
 \subsection{Database}
-To use \bibtex{} you create a database of references in one or more separate .bib-files, and then you can cite those references anywhere in your text. An example .bib-file with three entries is shown in \reflst{latex:bibtex}. Each entry consists of a \emph{specification} of what type of reference it is, a \emph{key}, and a list of fields (\emph{parameter}--\emph{value} pairs). In \reflst{latex:bibtex} the we have three references, a book, an article from a scientific journal, and a website. Since citation of websites is a rather new phenomena there's no standardized way of doing it. We have used the catch-all specification \latexin{@misc} (miscellaneous).
+\index{specification}
+\index{parameter}
+\index{key}
+\index{value}
+\index{field}
+To use \bibtex{} you create a database of references in a separate .bib-file, and you can then cite those references anywhere in your text. An example .bib-file with three entries/references is shown in \reflst{latex:bibtex}. Each entry consists of a \emph{specification} of what type of reference it is (e.g.\ \latexin{@article}), a \emph{key}, and a list of \emph{fields} (\emph{parameter}--\emph{value} pairs). In \reflst{latex:bibtex} the we have three entries, a book, an article from a scientific journal, and a website. Since citation of websites is a rather new phenomena there's no standardized way of doing it. We have used the catch-all specification \latexin{@misc} (miscellaneous).
 
 \begin{listing}
 	\inputminted[frame=lines,linenos]{latex}{latex/main.bib}
@@ -1293,17 +1302,24 @@ To use \bibtex{} you create a database of references in one or more separate .bi
 	\label{lst:latex:bibtex}
 \end{listing}
 
-The key is the first thing that follows inside the curly braces, and it's similar to labels of figures and tables; you use it when you want to cite the reference. It can be anything, but it's a good idea to always follow some sort of rule for how to write it. Here the key is the surname of the first author in lowercase followed by the year of publication.
+The key is the first thing that follows inside the curly braces, and it's similar to labels of figures and tables; you use it when you want to cite the entry. It can be anything, but it's a good idea to always follow some sort of rule for how to write it. Here the key is the surname of the first author in lowercase followed by the year of publication.
 
-Next, all the fields are separated by commas. The values are enclosed in either curly braces or quotation marks. With every type of specification some fields are mandatory. For an article for instance, you need its author, title, year of publication and which journal or magazine it was published in. For books, on the other hand, you don't have a \latexin{journal} parameter, but rather which publisher published the book. Some books don't have an author, but instead an editor, but it needs to have one of the two. You may include more parameters as well, such as which edition of a book it is, which volume and so forth. Here we only fulfilled the minimum requirement, but more is better.
+Next, all the fields are separated by commas. The values are enclosed in either curly braces or quotation marks. With every type of specification some fields are mandatory. For an article for instance, you need its author, title, year of publication and which journal (or magazine or newspaper) it was published in. For books, on the other hand, you don't have a \latexin{journal} parameter, but rather which publisher published the book. Some books don't have an author, but instead an editor, but it needs to have one of the two. You may include more parameters as well, such as which edition of a book it is, which volume and so forth. Here we only fulfilled the minimum requirement, but more is better.
 
-There are of course several other reference types you can use as well. Rather than listing them all here we suggest you look them up when you need them. Texmaker lists various kinds of specifications in the menu Bibliography$\rightarrow$Bibtex. If you choose ``Book'', you'll get the \latexin{@book}-specification along with all the fields you might need. Optional fields are prefixed by \latexin{OPT}, while for instance the author and editor fields are prefixed by \latexin{ALT} because you need \emph{one} of the two. Fill out what you can and delete the rest. Remove prefixes of used fields.
+There are of course several other reference types you can use as well. Rather than listing them all here we suggest you look them up when you need them. Texmaker lists various kinds of specifications in the menu Bibliography$\rightarrow$Bibtex. If you choose ``Book'', you'll get the \latexin{@book}-specification along with all the fields you might need. Optional fields are prefixed by \latexin{OPT}, while for instance the author and editor fields are prefixed by \latexin{ALT} because you need \emph{one} of the two alternatives. Fill out what you can and delete the rest. Remove prefixes of used fields.
 
-Another approach may be to download auto-generated \bibtex{} code, which is offered among others by many scientific journals. \url{http://lead.to/amazon/en/} is another site which offers \bibtex{} code of books available through Amazon. You may want to look through the code yourself, though, to give it a new key, and to remove meaningless fields such as the exact URL to where you can buy the book and to which price.
+Another approach may be to download auto-generated \bibtex{} code, which is offered by many scientific journals. \url{http://lead.to/amazon/en/} is another site which offers \bibtex{} code of books available on Amazon. You may want to look through the code yourself, though, to give it a new key, and to remove meaningless fields such as the exact URL to where you can buy the book and to which price.
 
-It's worthwhile saying a few words about how values are written. First of all, all authors are separated by \latexin{and}. When a bibliography is printed, depending on the chosen bibliography style, \bibtex{} may replace \latexin{and} by comma or ``and'' in another language or whatever it deems appropriate. It may also abbreviate names, e.g. ``Dennis MacAlistair Ritchie'' may become ``Ritchie, D.M.''. You should not abbreviate them yourself. \bibtex{} may also change capitalization in for instance titles. Here, we have put curly braces around the C in ``The C Programming Language'' since C is the name of the language. This tells \bibtex{} to not alter capitalization. This may also be useful when writing commands such as \latexin{\LaTeX}.
+It's worthwhile saying a few words about how values are written. First of all, all authors should be separated by \latexin{and} (not comma). When a bibliography is printed, depending on the chosen bibliography style, \bibtex{} may replace \latexin{and} by comma or ``and'' in another language or whatever it deems appropriate. It may also abbreviate names, e.g. ``Dennis MacAlistair Ritchie'' may become ``Ritchie, D.M.''. You should not abbreviate them yourself. \bibtex{} may also change capitalization in for instance titles. Here, we have put curly braces around the C in ``The C Programming Language'' for instance, since C is the name of the language and \bibtex{} should not be allowed to alter capitalization. This may also be useful when writing commands with capital letters, such as \latexin{\LaTeX}.
 
 When citing websites we have here written the author and title according to how the web page asks to be cited, and we have used \latexin{hyperref} package's \latexin{\url} command to specify the URL address. This makes the URL clickable when you open it in a PDF-viewer. You should \emph{always} assure the quality and reliability of your sources, especially so for web pages which is rather volatile. Here we have included a note of when the information was retrieved. Some pages also proclaim to have so-called \emph{permalinks} (permanent links) which is supposed to guarantee that the contents will not change. However, this guarantee is often provided by the author him/herself, and web pages are usually not peer reviewed. I recommend being cautions with using web pages as sources. The same is true for the \latexin{@booklet}-specification, which is for printed books without a named publisher, and \latexin{@unpublished} which is for documents which is not formally published.
+
+\begin{figure}
+	\centering
+	\includegraphics[scale=0.48]{graphics/citogenesis.png}
+	\caption{Careful which references you use. ``Citogenesis'' (\url{https://xkcd.com/978}) by Randall Munroe is licensed under \mbox{CC~BY-NC~2.5}.}
+	\label{fig:latex:citogenesis}
+\end{figure}
 
 \subsection{Making Citations}\label{sec:latex:citations}
 An example of a file which uses the bibliography is shown in \reflst{latex:bibtex2}. Citations are made using \latexin{\cite}. \latexin{\cite} can take several argument (separated by comma), which may for instance render to ``[1,3--5]'' if you happen to cite references 1, 3, 4 and 5. \latexin{\bibliographystyle} is used to specify the bibliography style (\refsec{latex:bibstyle}) and \latexin{\bibliography} is used to specify the name of the .bib-file (here: \verb|main.bib|) and where to put the bibliography. It will in this case compile to
@@ -1321,7 +1337,7 @@ An example of a file which uses the bibliography is shown in \reflst{latex:bibte
 	\label{lst:latex:bibtex2}
 \end{listing}
 
-Notice that unused references, e.g.\ references which appear in the .bib-file but which is not cited anywhere in the document, is omitted from the bibliography. This is very convenient, because it means you can make a .bib-file containing your books and articles, and reuse it again and again. Just make sure to keep it clean and tidy. If you really need an item in the bibliography which you do not cite, you can use \latexin{\nocite} somewhere in your document.
+Notice that unused references, e.g.\ references which appear in the .bib-file but which is not cited anywhere in the document, is omitted from the bibliography. This is very convenient, because it means you can make a .bib-file containing all your books and articles, and reuse it again and again. Just make sure to keep it clean and tidy. If you really need an item in the bibliography which you do not cite, you can use \latexin{\nocite} somewhere in your document.
 
 
 
@@ -1368,8 +1384,114 @@ Kernighan, B. W. and D. M. Ritchie (1988). \textit{The C Programming Language}. 
 
 Moreover, while most are sorted alphabetically on the first author's last name, others are sorted in the order at which they appear in the text (unsorted), i.e. the first cited reference is [1], the second is [2] and so forth. At last, another famous family of styles is the Harvard styles which are available through the \latexin{harvard} package. There's also the \latexin{natbib} package which allows a range of various styles used by various journals in the domain of natural sciences, as well as being quite customizable by the user.
 
-\section{Writing an Application}
+\section{Customization}
+\subsection{New Commands}
+\subsection{Renew Commands}
+\subsection{Non-break space and french-vs-english spacing}
+\subsection{Hyphenation strictness}
+\subsection{Geometry}
+\subsection{URL}
+\subsection{Line Spacing and Draft}
 
-\section{Writing a CV using CurVe}
+\section{Template: Scientific Report}
+\reflst{latex:report} shows a template for reports which comes pre-loaded with many commonly used packages. It also contains a typical disposition for scientific reports: The first section is an introduction of the problem. Then the background theory necessary to understand the report (but not more) is covered. The third section is an explanation of the methods used to investigate and/or solve the problem at hand. This may for instance be which physical experiments or which computer simulations are carried out. This is also where the \emph{new} theory is presented. Then the results of the study is presented. Since the results should be strictly objective there is no room for interpretation here. Instead, the meaning---or possible meaning---of the results (as well as possible sources of errors) can be discussed in a separate chapter. This should lead towards a final conclusion presented in its own chapter. The separation of factual results from their interpretation in the discussion chapter allows other readers to question your interpretation and conclusion. Your goal is to make it such that other readers \emph{have} to draw the same conclusion.
 
-\section{Writing a presentation using Beamer}
+\begin{longlisting}
+	\inputminted[frame=lines,linenos]{latex}{latex/report.tex}
+	\caption{A report template}
+	\label{lst:latex:report}
+\end{longlisting}
+
+Of course, this is very idealized disposition, but nonetheless something one often use as a basis. One might end up with more chapters, and chapters with a different names, but the organization is often roughly the same. The whole report is also briefly summarized---typically no more than a page---in an abstract in the beginning of the report. This usually contains just a few sentence from each of the other parts. What was done, how, and why. It's also common to write the abstract in past tense whereas the rest of the report is in present tense (e.g.\ ``It was seen that\ldots'' vs.\ ``It is seen that\ldots''). There are of course many more rules for how reports should be written, and you are generally advised to look for such information elsewhere.
+
+\latexin{\pagenumbering} is used to change the style of the page numbering of the various parts, while \latexin{\clearpage} is used to clear the rest of the page (i.e.\ start a new page).
+
+For lengthy reports (e.g.\ 50 pages) it may be more appropriate to switch to the \latexin{report} document class and replace all sections by chapters. However, for smaller reports of maybe 10 or 20 pages, \latexin{article} is often more suited. In either case, the chapters/sections should preferably also be put in separate .tex-files and included using \latexin{\input}.
+
+Many users also desire another title page. A plethora of templates are available online.
+
+\section{Template: Beamer Presentation}
+The de facto standard tool for creating slideshow presentations (e.g.\ like PowerPoint) in \LaTeX{} is \beamer{}. A sample presentation is shown in \reflst{latex:beamer}. In \beamer{} presentations a sans serif font is used for most of the typesetting. Since equations looks better using a serif font, we have passed the option \latexin{mathserif} to the document class. We have also chosen a theme named Warsaw with the command \latexin{\usetheme}. \beamer{} comes with many themes you can choose between to determine the looks of your presentation.
+
+The \latexin{\author} and \latexin{\title} commands work like before, except they now also takes an optional short form. The long form is used on the title page whereas the short form is used on all the other slides. In addition we have the \latexin{\institute} command where you tell \LaTeX{} which institute you do the presentation on behalf of. All of these are included in the title slide.
+
+\begin{longlisting}
+	\inputminted[frame=lines,linenos]{latex}{latex/beamer.tex}
+	\caption{A \LaTeX{} \beamer{} example}
+	\label{lst:latex:beamer}
+\end{longlisting}
+
+Next, each frame (or slide) is written consecutively, each frame inside its own \latexin{frame} environment with a title and (optionally) a subtitle as follows:
+
+\begin{minted}{latex}
+	\begin{frame}
+		\frametitle{...}
+		\framesubtitle{...}
+		% Contents here.
+	\end{frame}
+\end{minted}
+The first frame is usually the title page (as in our example) and only contains \latexin{\titlepage}. The second frame in our example is displayed in \reffig{latex:beamer}.
+
+\begin{figure}
+	\centering
+	{%
+		\setlength{\fboxsep}{0pt}%
+		\fbox{\includegraphics[scale=0.5,page=6]{latex/beamer.pdf}}%
+	}%
+	\caption{A \beamer{} slide}
+	\label{fig:latex:beamer}
+\end{figure}
+
+A frame may be split into columns by use of the \latexin{column} environment:
+
+\begin{minted}{latex}
+	\begin{columns}
+		\column{0.5\textwidth}
+		% Contents of left column
+		\column{0.5\textwidth}
+		% Contents of right column
+	\end{columns}
+\end{minted}
+In this case both columns consume half the width.
+
+It is also very convenient that \beamer{} allows you to define blocks of contents. To put something inside a block, you simply put it inside a \latexin{block} environment. In addition to emphasizing text using \latexin{\emph}, \beamer{} also defines a command \latexin{\alert} with which you can make high contrast alerting text (typically in red). Apart from this, you can pretty much do the same inside \beamer{} as in a normal document; you can include graphics, tables, write equations and lists, etc.
+
+There are also handy functions for overlays, e.g.\ making variations of the same slide shown after one another. Here, we have used the \latexin{\pause} command between the items in the itemized list. This makes pauses in between the items, such that you get one more item each time you change slide. There are of course many other functions like this which you can find in the documentation.
+
+
+\section{Template: CV and Job Application}
+There are many available document classes, packages and templates available for writing CV's and job applications, and you should probably spend some time investigating them before you start on such a task. You probably also want to spend some time tweaking the contents and looks of your CV. In this example we use the \latexin{moderncv} document class because (1) it requires minimal tweaking to look good and (2) it comes with a matching application letter. In fact, the template provided in \reflst{latex:moderncv} is only slightly modified compared to the template which comes with the package. The result can be seen in \reffig{latex:moderncv}.
+
+\begin{longlisting}
+	\inputminted[frame=lines,linenos,breaklines]{latex}{latex/moderncv.tex}
+	\caption{A CV template}
+	\label{lst:latex:moderncv}
+\end{longlisting}
+
+\begin{figure}
+	\centering
+	{%
+		\setlength{\fboxsep}{0pt}%
+		\fbox{\includegraphics[scale=0.5,page=1]{latex/moderncv.pdf}}%
+	}%
+	\caption{CV created using ModernCV.}
+	\label{fig:latex:moderncv}
+\end{figure}
+
+The ModernCV document uses the familiar \latexin{\section} command to make rubrics in the CV, and a new command \latexin{\cventry} to make entries in these rubrics. Moreover, the commands \latexin{\makecvtitle}, \latexin{\makelettertitle} and \latexin{\makeletterclosing} prints out information based upon commands where you tell ModernCV your name, phone number, e-mail address, and so on. Most of the commands are rather self-explanatory. You are encouraged to examine the ModernCV class documentation when you want to use it.
+
+Another class for writing CV's is CurVe, which is perhaps more customizable than ModernCV, but it also requires more tweaking to get a nice result, and it doesn't come with a matching job application. Other classes exist as well. General letters (including job applications) can be written using the \latexin{letter} class. Texmaker provides a template for letters if you go to Wizard$\rightarrow$Quick~Letter.
+
+
+%\begin{listing}
+%	\inputminted[frame=lines,linenos]{latex}{latex/curve.tex}
+%	\caption{A CV template}
+%	\label{lst:latex:curve}
+%\end{listing}
+%
+%\section{Template: Letter}
+%\begin{listing}
+%	\inputminted[frame=lines,linenos]{latex}{latex/letter.tex}
+%	\caption{A letter/application template}
+%	\label{lst:latex:letter}
+%\end{listing}

@@ -22,6 +22,9 @@
 \usepackage{siunitx}
 \usepackage[answerdelayed]{exercise}
 %\usepackage[Bjornstrup]{fncychap}
+\usepackage{caption}
+
+\newenvironment{longlisting}{\captionsetup{type=listing}}{}
 
 % EXERCISES
 
@@ -37,6 +40,10 @@
 
 
 \newcommand{\bibtex}{\textsc{Bib}\!\TeX}
+\newcommand{\beamer}{\textsc{Beamer}}
+
+\newcommand{\anl}{\ensuremath{\langle}}
+\newcommand{\anr}{\ensuremath{\rangle}}
 
 \definecolor{folder}{HTML}{325fcf}
 
@@ -55,6 +62,7 @@
 \newcommand{\refsec}[1]{Section~\ref{sec:#1}}
 \newcommand{\reftab}[1]{Table~\ref{tab:#1}}
 \newcommand{\refeq}[1]{(\ref{eq:#1})}
+\newcommand{\refapp}[1]{Appendix~\ref{app:#1}}
 
 \renewcommand{\dateseparator}{.}
 
@@ -85,6 +93,9 @@
 \input{answers}
 
 \backmatter
+
+\appendix
+\input{norwegian}
 
 \printindex
 

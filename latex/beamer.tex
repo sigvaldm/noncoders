@@ -1,31 +1,50 @@
-\documentclass[11pt]{beamer}
-\usetheme{Szeged}
+\documentclass[mathserif]{beamer}
+\usetheme{Warsaw}
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
-\usepackage{amsmath}
-\usepackage{amsfonts}
-\usepackage{amssymb}
-\usepackage{graphicx}
-\author{Sigvald Marholm}
-\title{\LaTeX{} Beamer}
-%\setbeamercovered{transparent} 
-%\setbeamertemplate{navigation symbols}{} 
-%\logo{} 
-%\institute{} 
-%\date{} 
-%\subject{} 
+\usepackage{amsmath,amssymb,graphicx}
+
+\author[J.W.V.L. Name]{John With Very Long Name}
+\title[Short Title]{Very, Very Long Title}
+\institute{John's Institute}
+
 \begin{document}
 
 \begin{frame}
 \titlepage
 \end{frame}
 
-%\begin{frame}
-%\tableofcontents
-%\end{frame}
-
-\begin{frame}{Test}
-test
+\begin{frame}
+	\frametitle{Title}
+	\framesubtitle{Subtitle}
+	\begin{columns}
+		\column{0.5\textwidth}
+		\begin{block}{Master plan}
+			\begin{enumerate}
+				\item Buy farm
+				\pause
+				\item Buy animals
+				\begin{itemize}
+					\item Cows
+					\pause
+					\item Sheep
+					\pause
+					\item Chickens
+					\pause
+				\end{itemize}
+				\item Start farming
+			\end{enumerate}	
+		\end{block}
+		\column{0.5\textwidth}
+		\emph{Correct:}
+		\begin{equation}
+			\bar{x}=\frac{1}{N}\sum_{i=1}^Nx_i
+		\end{equation}
+		\alert{Wrong:}
+		\begin{equation}
+			\bar{x}=\frac{1}{N}\sum_{i=0}^Nx_i
+		\end{equation}
+	\end{columns}
 \end{frame}
 
 \end{document}

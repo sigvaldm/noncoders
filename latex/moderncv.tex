@@ -1,0 +1,62 @@
+\documentclass[11pt,a4paper,sans]{moderncv}
+\moderncvstyle{casual}
+\moderncvcolor{blue}
+\usepackage[scale=0.75]{geometry}
+\usepackage{lipsum}
+
+\name{John}{Smith}
+\title{Curriculum Vit\ae}
+\address{Some Street 4}{1234 Place}{Country}
+\phone[mobile]{+1~(234)~567~890}
+\phone[fixed]{+2~(345)~678~901}
+\phone[fax]{+3~(456)~789~012}
+\email{john.smith@gmail.com}
+\homepage{www.johnsmith.com}
+\social[linkedin]{john.smith}
+\social[twitter]{jsmith}
+\social[github]{jsmith}
+
+\begin{document}
+
+% CV
+
+\makecvtitle
+
+\section{Experience}
+\cventry{2012--}{Mechanical Designer}{CoolCorp Inc.}{City}{}{Design and production of cool stuff\newline{}%
+Achievements:%
+\begin{itemize}%
+	\item Making cubical spheres
+	\item Drinking coffee
+\end{itemize}}
+
+\section{Education}
+\cventry{2010--2012}{MSc}{University of Choice}{City}{Grade: \textit{B}}{Mechanical Engineering}
+\cventry{2007--2010}{BSc}{University of Choice}{City}{Grade: \textit{B}}{Mechanical Engineering}
+
+\section{Languages}
+\cvitemwithcomment{English}{Native Speaker}{}
+
+\section{Computer skills}
+\cvitem{Languages}{Bash, Python, \LaTeX{}, Git}
+
+\section{Interests}
+\cvitem{Running}{Ultra Marathon}
+
+\section{Reference}
+\cvitem{Supervisor}{Some Person\newline Some Street 4\newline 1234 Place}
+\clearpage
+
+% LETTER
+
+\recipient{Company Recruitment team}{Company, Inc.\\123 somestreet\\some city}
+\date{January 01, 1984}
+\opening{Dear Sir or Madam,}
+\closing{Yours faithfully,}
+\enclosure[Attached]{curriculum vit\ae{}}
+
+\makelettertitle
+\lipsum[1-2]
+\makeletterclosing
+
+\end{document}
